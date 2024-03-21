@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter;
+}
+.flex-center {
+  @apply flex justify-center items-center;
+}
+.auth {
+  @apply flex-center min-h-screen w-full;
+}
+.website-theme-color {
+  @apply text-[#7BCAD7];
+}
+
+.website-theme-color-bg {
+  @apply bg-[#7BCAD7];
+}
+
+.flexCenter {
+  @apply flex justify-center items-center;
+}
+
+.flexBetween {
+  @apply flex justify-between items-center;
+}
+
+.flexStart {
+  @apply flex items-center justify-start;
+}
+
+.text-small {
+  @apply text-sm font-medium;
+}
+
+.paddings {
+  @apply lg:px-8 py-6 px-5;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 12px;
+}
+
+.footer {
+  @apply flex-col paddings w-full gap-20;
+}
+
+/* .footer_copyright {
+  @apply max-sm:flex-col w-full text-sm font-normal;
+} */
+
+.footer_column {
+  @apply flex-1 flex flex-col gap-3 text-sm min-w-max;
+}
+
+/* Navbar */
+.navbar {
+  @apply py-[-10px] px-5 border-b  gap-4;
+}
