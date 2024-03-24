@@ -22,7 +22,7 @@ const FooterColumn = ({ title, links }: ColumnProps) => (
 );
 
 const Footer = () => (
-  <section className="flexStart footer border-t-1 border-gray-200">
+  <section className="flexStart footer border-t-1 border-gray-200 bg-[#F0F0F0]">
     <div className="flex flex-col gap-12 w-full">
       <div className="flex items-start flex-col">
         <Image src="/logo.svg" width={80} height={20} alt="logo" />

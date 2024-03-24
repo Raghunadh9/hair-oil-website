@@ -15,8 +15,8 @@ const MobileHamburgerSheetUser = () => {
         <span className="capitalize ">Hai, {user?.username}!</span>
 
         <div className="flex flex-row mb-2 mt-[30px] justify-between font-bold text-[15px]">
-          <Link href={"/profile"} className="font-bold">
-            Manage Account
+          <Link href={"/my-orders"} className="font-bold">
+            My Orders
           </Link>
           <div className="">
             {" "}

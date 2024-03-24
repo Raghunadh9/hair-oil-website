@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/popover";
 const Navbar = async () => {
   return (
-    <nav className="flexBetween navbar shadow-md ">
+    <nav className="flexBetween navbar shadow-md sticky top-0 z-[200] bg-white upto425:z-[10]">
       <div className="flex-1 flexStart gap-10">
         <Link href="/">
           <Image src="/logo.svg" width={80} height={20} alt="logo" />
@@ -26,19 +26,21 @@ const Navbar = async () => {
           ))}
         </ul>
       </div>
-      <div className="flexCenter gap-4 upto425:hidden">
-        <Link href={"/search-suggestions"}>
-          {" "}
-          <div className="cursor-pointer">{ICONS.search}</div>
-        </Link>
-        <Link href={"/favourites"}>
-          {" "}
-          <div className="cursor-pointer">{ICONS.favourite}</div>
-        </Link>
+      <div className="flexCenter gap-4 ">
+        <div className="upto425:hidden flex flex-row gap-4">
+          <Link href={"/search-suggestions"}>
+            {" "}
+            <div className="cursor-pointer">{ICONS.search}</div>
+          </Link>
+          <Link href={"/favourites"}>
+            {" "}
+            <div className="cursor-pointer">{ICONS.favourite}</div>
+          </Link>
+        </div>
         <Link href="/cart">
           <div className="cursor-pointer">{ICONS.cart}</div>
         </Link>
-        <div className="">
+        <div className="upto425:hidden">
           <SignedOut>
             {" "}
             <Link href={"/sign-in"}>
@@ -46,6 +48,7 @@ const Navbar = async () => {
             </Link>
           </SignedOut>
           <SignedIn>
+            {/* Popover */}
             <Popover>
               <PopoverTrigger asChild>
                 <Button className={"website-theme-color-bg"}>
@@ -61,9 +64,7 @@ const Navbar = async () => {
                     <Link href={link.href}>
                       {link.text === "Logout" ? <SignOutButton /> : link.text}
                     </Link>
-                    {link.href === "/profile" && (
-                      <span className="">{ICONS.rightArrow}</span>
-                    )}
+
                     {link.href === "/my-orders" && (
                       <span className="">{ICONS.order}</span>
                     )}

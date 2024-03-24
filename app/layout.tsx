@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import { config } from "@/config/config";
 import Navbar from "@/components/shared/components/Navbar";
 import Footer from "@/components/shared/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const montserrat = Poppins({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: config.websiteTitle,
@@ -27,7 +27,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={montserrat.className}>
           <Navbar />
-          <main className="px-8">{children}</main>
+          <main className="">{children}</main>
           <Footer />
         </body>
       </html>

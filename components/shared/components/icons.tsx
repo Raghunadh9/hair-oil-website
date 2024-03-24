@@ -22,6 +22,7 @@ import { FaAngleRight } from "react-icons/fa";
 import { BsCart, BsHeart, BsSearch, BsShop } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { TbMapPinSearch } from "react-icons/tb";
+import { CiBoxList } from "react-icons/ci";
 
 export const ICONS = {
   right: <IoMdCheckmark />,
@@ -61,4 +62,5 @@ export const ICONS = {
   trackOrderMobile: <TbMapPinSearch size={20} />,
   order: <FaBoxOpen size={25} />,
   orderMobile: <FaBoxOpen size={20} />,
+  collectionsMobile: <CiBoxList size={25} />,
 };

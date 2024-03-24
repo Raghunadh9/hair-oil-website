@@ -3,7 +3,7 @@ import {
   createUser,
   deleteUser,
   updateUser,
-} from "@/components/lib/actons/user.actions";
+} from "@/components/lib/actions/user.actions";
 import { clerkClient } from "@clerk/nextjs";
 import { WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";

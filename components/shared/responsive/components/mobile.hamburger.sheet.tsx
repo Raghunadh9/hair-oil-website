@@ -58,6 +58,9 @@ const MobileHamburgerSheet = () => {
                 {link.href === "/favourites" && (
                   <span>{ICONS.favouriteMobile}</span>
                 )}
+                {link.href === "/collections" && (
+                  <span>{ICONS.collectionsMobile}</span>
+                )}
                 {link.href === "/cart" && <span>{ICONS.cartMobile}</span>}
               </div>
             ))}
