@@ -4,19 +4,28 @@ import { NavLinks, UserLoggedinLinks } from "@/config/constants";
 import { Button } from "@nextui-org/react";
 import { ICONS } from "./icons";
 import MobileHamburgerSheet from "../responsive/components/mobile.hamburger.sheet";
-import { SignOutButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  SignOutButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  auth,
+} from "@clerk/nextjs";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+
+import Logo from "./logo/logo";
+import { CartNumber } from "./client/singleProduct/cart.count";
+import CartSheetContent from "./cart/cart.sheet";
 const Navbar = async () => {
   return (
     <nav className="flexBetween navbar shadow-md sticky top-0 z-[200] bg-white upto425:z-[10]">
       <div className="flex-1 flexStart gap-10">
-        <Link href="/">
-          <Image src="/logo.svg" width={80} height={20} alt="logo" />
-        </Link>
+        <Logo />
 
         <ul className="xl:flex hidden text-medium font-semibold gap-7">
           {NavLinks.map((link) => (
@@ -37,9 +46,20 @@ const Navbar = async () => {
             <div className="cursor-pointer">{ICONS.favourite}</div>
           </Link>
         </div>
-        <Link href="/cart">
-          <div className="cursor-pointer">{ICONS.cart}</div>
-        </Link>
+
+        <Sheet>
+          <SheetTrigger>
+            {" "}
+            <div className="cursor-pointer relative ">
+              {ICONS.cart}
+              <span className="absolute bottom-3 rounded-full website-theme-color-bg w-4 h-4 p-0 right-[-5px] text-white text-[12px] leading-tight text-center">
+                <CartNumber />
+              </span>
+            </div>
+          </SheetTrigger>
+          <CartSheetContent />
+        </Sheet>
+
         <div className="upto425:hidden">
           <SignedOut>
             {" "}

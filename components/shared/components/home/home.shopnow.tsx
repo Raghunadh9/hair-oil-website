@@ -1,7 +1,7 @@
 // import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
-import { ICONS } from "./icons";
+import { ICONS } from "../icons";
 import { config } from "@/config/config";
 import Link from "next/link";
 import { Button } from "@/components/ui/moving-border";

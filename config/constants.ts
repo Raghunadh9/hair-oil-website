@@ -1,3 +1,4 @@
+import { ICONS } from "@/components/shared/components/icons";
 import { config } from "./config";
 
 export const NavLinks: TypeofNavLinks[] = [
@@ -22,6 +23,14 @@ export const NavLinksMobile: TypeofNavLinks[] = [
   { href: "/favourites", key: "My Favourites", text: "My Favourites" },
   { href: "/cart", key: "Cart", text: "Cart" },
   { href: "/collections", key: "Collections", text: "Collections" },
+];
+export const ProductBadgesDataLeft: TypeofProductBadgesData[] = [
+  { title: "Secure Payments", icon: ICONS.securePay },
+  { title: "Free Shipping", icon: ICONS.fastShipping },
+];
+export const ProductBadgesDataRight: TypeofProductBadgesData[] = [
+  { title: "Safety Certified", icon: ICONS.safety },
+  { title: "High Quality", icon: ICONS.rightBadge },
 ];
 export const HomeShowcaseContent: TypeofHomeShowcaseContent[] = [
   {

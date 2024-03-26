@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import User from "../database/models/user.model";
 import { connectToDatabase } from "../database/db";
 import { handleError } from "@/lib/utils";
+import Cart from "../database/models/cart.model";
+import Product from "../database/models/product.model";
 
 // CREATE
 export async function createUser(user: CreateUserParams) {
@@ -50,6 +52,53 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
   }
 }
 
+export async function saveCartForUser(cart: any, user_id: string | undefined) {
+  try {
+    await connectToDatabase();
+    let products = [];
+    let user = await User.findOne({ clerkId: user_id });
+    let existing_cart = await Cart.deleteOne({ user: user._id });
+
+    for (let i = 0; i < cart.length; i++) {
+      let dbProduct: any = await Product.findById(cart[i]._id).lean();
+      let subProduct = dbProduct.subProducts[cart[i].style];
+      let tempProduct: any = {};
+      tempProduct.name = dbProduct.name;
+      tempProduct.product = dbProduct._id;
+      tempProduct.color = {
+        color: cart[i].color.color,
+        image: cart[i].color.image,
+      };
+      tempProduct.image = subProduct.images[0].url;
+      tempProduct.qty = Number(cart[i].qty);
+      tempProduct.size = cart[i].size;
+      tempProduct.shop = cart[i].vendor ? cart[i].vendor : {};
+      tempProduct.shopId =
+        cart[i].vendor && cart[i].vendor._id ? cart[i].vendor._id : "";
+
+      let price = Number(
+        subProduct.sizes.find((p: any) => p.size == cart[i].size).price
+      );
+      tempProduct.price =
+        subProduct.discount > 0
+          ? (price - price / Number(subProduct.discount)).toFixed(2)
+          : price.toFixed(2);
+      products.push(tempProduct);
+    }
+    let cartTotal = 0;
+    for (let i = 0; i < products.length; i++) {
+      cartTotal = cartTotal + products[i].price * products[i].qty;
+    }
+    await new Cart({
+      products,
+      cartTotal: cartTotal.toFixed(2),
+      user: user._id,
+    }).save();
+    return { success: true };
+  } catch (error) {
+    console.log(error);
+  }
+}
 // DELETE
 export async function deleteUser(clerkId: string) {
   try {

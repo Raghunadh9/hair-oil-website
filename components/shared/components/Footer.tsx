@@ -2,6 +2,7 @@ import { config } from "@/config/config";
 import { footerLinks } from "@/config/constants";
 import Image from "next/image";
 import Link from "next/link";
+import Logo from "./logo/logo";
 
 type ColumnProps = {
   title: string;
@@ -25,7 +26,7 @@ const Footer = () => (
   <section className="flexStart footer border-t-1 border-gray-200 bg-[#F0F0F0]">
     <div className="flex flex-col gap-12 w-full">
       <div className="flex items-start flex-col">
-        <Image src="/logo.svg" width={80} height={20} alt="logo" />
+        <Logo />
 
         <p className="text-start text-sm font-normal mt-5 max-w-xs">
           {config.websiteTitle} is the {config.websiteGreatness}

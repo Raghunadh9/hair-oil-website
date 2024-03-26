@@ -34,6 +34,7 @@ const config: Config = {
       xl2: { min: "1536px" },
       //max in our lang
       upto321: { max: "321px" },
+      upto320: { max: "320px" },
       upto375: { max: "375px" },
       upto425: { max: "425px" },
       upto640: { max: "640px" },

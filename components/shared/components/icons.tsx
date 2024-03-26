@@ -1,8 +1,8 @@
 import { IoMdCheckmark } from "react-icons/io";
 import { TiHomeOutline } from "react-icons/ti";
-import { MdOutlineDashboard } from "react-icons/md";
+import { MdHealthAndSafety, MdOutlineDashboard } from "react-icons/md";
 import { GoPencil, GoSignOut } from "react-icons/go";
-import { IoAnalyticsOutline } from "react-icons/io5";
+import { IoAnalyticsOutline, IoStar } from "react-icons/io5";
 import { GoPeople } from "react-icons/go";
 import { MdElectricBolt } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -10,7 +10,11 @@ import { BiWorld } from "react-icons/bi";
 import { CgLogOut } from "react-icons/cg";
 import { IoMdArrowUp } from "react-icons/io";
 import { FaBottleDroplet, FaBoxOpen, FaLink, FaRegUser } from "react-icons/fa6";
-import { RiExternalLinkLine } from "react-icons/ri";
+import {
+  RiExternalLinkLine,
+  RiSecurePaymentLine,
+  RiVerifiedBadgeFill,
+} from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
@@ -18,7 +22,7 @@ import { CgProfile } from "react-icons/cg";
 import { FiPlusCircle, FiUser } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoIosRepeat } from "react-icons/io";
-import { FaAngleRight } from "react-icons/fa";
+import { FaAngleRight, FaShippingFast } from "react-icons/fa";
 import { BsCart, BsHeart, BsSearch, BsShop } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { TbMapPinSearch } from "react-icons/tb";
@@ -45,7 +49,7 @@ export const ICONS = {
   cross: <RxCross2 />,
   profile: <CgProfile />,
   plus: <FiPlusCircle />,
-  delete: <MdDeleteOutline />,
+  delete: <MdDeleteOutline size={20} />,
   regenerate: <IoIosRepeat />,
   cart: <BsCart size={25} />,
   cartMobile: <BsCart size={20} />,
@@ -63,4 +67,9 @@ export const ICONS = {
   order: <FaBoxOpen size={25} />,
   orderMobile: <FaBoxOpen size={20} />,
   collectionsMobile: <CiBoxList size={25} />,
+  reviewStar: <IoStar size={20} className="stroke-orange-400" />,
+  securePay: <RiSecurePaymentLine size={20} />,
+  fastShipping: <FaShippingFast size={20} />,
+  safety: <MdHealthAndSafety size={20} />,
+  rightBadge: <RiVerifiedBadgeFill size={20} />,
 };

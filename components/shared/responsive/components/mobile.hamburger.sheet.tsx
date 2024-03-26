@@ -76,8 +76,8 @@ const MobileHamburgerSheet = () => {
               <Link href="/">
                 <div className="flex justify-center">
                   <Image
-                    src="/logo.svg"
-                    width={80}
+                    src="/images/logo.png"
+                    width={50}
                     height={20}
                     alt="logo"
                     // className="absolute right-0  left-[80px]"

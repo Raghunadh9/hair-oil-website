@@ -1,0 +1,33 @@
+.swiper {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 500px) {
+  .swiper {
+    flex-direction: row-reverse;
+    justify-self: flex-start;
+    gap: 10px;
+  }
+}
+@media (min-width: 800px) {
+  .swiper {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1000px) {
+  .swiper {
+    flex-direction: row-reverse;
+    justify-self: flex-start;
+    gap: 10px;
+  }
+}
+@media (min-width: 500px) {
+  .list {
+    margin-top: 0;
+    flex-direction: column;
+    height: 100%;
+  }
+  .list > img {
+    width: 100px !important;
+  }
+}

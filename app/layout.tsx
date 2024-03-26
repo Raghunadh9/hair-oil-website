@@ -5,6 +5,7 @@ import { config } from "@/config/config";
 import Navbar from "@/components/shared/components/Navbar";
 import Footer from "@/components/shared/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
+import toast, { Toaster } from "react-hot-toast";
 
 const montserrat = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Navbar />
           <main className="">{children}</main>
           <Footer />
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
