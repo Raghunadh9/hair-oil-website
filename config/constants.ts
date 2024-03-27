@@ -119,3 +119,24 @@ export const footerLinks: TypeofFooterLinks[] = [
     ],
   },
 ];
+type TypeofPaymentMethods = {
+  name: string;
+  id: string;
+  description?: string;
+  images: [];
+};
+export const paymentMethods: TypeofPaymentMethods[] = [
+  {
+    name: "RazorPay",
+    id: "razorPay",
+    images: [],
+  },
+
+  {
+    name: "Cash",
+    id: "cash",
+    description:
+      "If you don't have a paypal account,you can also pay via paypal with your credit card or bank debit card. Payment can be submitted in any currency!",
+    images: [],
+  },
+];

@@ -79,17 +79,18 @@ interface TypeofSingleProduct {
   updatedAt: string;
   __v: number;
 }
-
-// declare type TypeofSingleSubProduct=
-//  {
-//     color: { color: string; image: string };
-//     sold: number;
-//     images: { url: string; public_url: string }[];
-//     description_images: any[]; // You may want to replace `any[]` with a more specific type if you have defined description images elsewhere.
-//     sizes: { size: string; qty: number; price: number; _id: string }[];
-//     discount: number;
-//     _id: string;
-//   }
+declare type TypeofDBUser = {
+  _id: any;
+  clerkId: string;
+  email: string;
+  username: string;
+  image: string;
+  role: string;
+  defaultPaymentMethod: string;
+  address: any;
+  wishlist: string;
+  __v: any;
+};
 
 declare type TypefAllProducts = {
   _id: string;

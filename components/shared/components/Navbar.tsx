@@ -23,8 +23,8 @@ import { CartNumber } from "./client/singleProduct/cart.count";
 import CartSheetContent from "./cart/cart.sheet";
 const Navbar = async () => {
   return (
-    <nav className="flexBetween navbar shadow-md sticky top-0 z-[200] bg-white upto425:z-[10]">
-      <div className="flex-1 flexStart gap-10">
+    <nav className="flexBetween navbar shadow-md sticky top-0 z-[200] bg-white  upto425:z-[10]">
+      <div className="flex-1 flexStart gap-10 bg-">
         <Logo />
 
         <ul className="xl:flex hidden text-medium font-semibold gap-7">

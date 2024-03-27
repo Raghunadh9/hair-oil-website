@@ -5,7 +5,7 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div>
+    <div className="bg-[#F0F0F0] my-[5px]">
       <Link href={"/"}>
         <Image
           src="/images/logo.png"

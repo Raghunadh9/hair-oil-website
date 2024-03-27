@@ -6,6 +6,8 @@ import { connectToDatabase } from "../database/db";
 import { handleError } from "@/lib/utils";
 import Cart from "../database/models/cart.model";
 import Product from "../database/models/product.model";
+import Coupon from "../database/models/coupon.model";
+import mongoose from "mongoose";
 
 // CREATE
 export async function createUser(user: CreateUserParams) {
@@ -51,7 +53,28 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
     handleError(error);
   }
 }
+// DELETE
+export async function deleteUser(clerkId: string) {
+  try {
+    await connectToDatabase();
 
+    // Find user to delete
+    const userToDelete = await User.findOne({ clerkId });
+
+    if (!userToDelete) {
+      throw new Error("User not found");
+    }
+
+    // Delete user
+    const deletedUser = await User.findByIdAndDelete(userToDelete._id);
+    revalidatePath("/");
+
+    return deletedUser ? JSON.parse(JSON.stringify(deletedUser)) : null;
+  } catch (error) {
+    handleError(error);
+  }
+}
+// Cart operations for user:
 export async function saveCartForUser(cart: any, user_id: string | undefined) {
   try {
     await connectToDatabase();
@@ -96,27 +119,115 @@ export async function saveCartForUser(cart: any, user_id: string | undefined) {
     }).save();
     return { success: true };
   } catch (error) {
-    console.log(error);
+    handleError(error);
   }
 }
-// DELETE
-export async function deleteUser(clerkId: string) {
+export async function getSavedCartForUser(userId: string) {
   try {
     await connectToDatabase();
-
-    // Find user to delete
-    const userToDelete = await User.findOne({ clerkId });
-
-    if (!userToDelete) {
-      throw new Error("User not found");
-    }
-
-    // Delete user
-    const deletedUser = await User.findByIdAndDelete(userToDelete._id);
-    revalidatePath("/");
-
-    return deletedUser ? JSON.parse(JSON.stringify(deletedUser)) : null;
+    let user = await User.findOne({ clerkId: userId });
+    const cart = await Cart.findOne({ user: user._id });
+    return {
+      user: JSON.parse(JSON.stringify(user)),
+      cart: JSON.parse(JSON.stringify(cart)),
+    };
   } catch (error) {
     handleError(error);
   }
+}
+export async function changeActiveAddress(id: any, user_id: any) {
+  try {
+    await connectToDatabase();
+    const user = await User.findById(user_id);
+    let user_addresses = user.address;
+    let addresses = [];
+
+    for (let i = 0; i < user_addresses.length; i++) {
+      let temp_address = {};
+      if (user_addresses[i]._id == id) {
+        temp_address = { ...user_addresses[i].toObject(), active: true };
+        addresses.push(temp_address);
+      } else {
+        temp_address = { ...user_addresses[i].toObject(), active: false };
+        addresses.push(temp_address);
+      }
+    }
+    await user.updateOne(
+      {
+        address: addresses,
+      },
+      { new: true }
+    );
+    return JSON.parse(JSON.stringify({ addresses }));
+  } catch (error) {
+    handleError(error);
+  }
+}
+export async function deleteAddress(id: any, user_id: any) {
+  try {
+    await connectToDatabase();
+    const user = await User.findById(user_id);
+    await user.updateOne(
+      {
+        $pull: {
+          address: { _id: id },
+        },
+      },
+      { new: true }
+    );
+    return JSON.parse(
+      JSON.stringify({
+        addresses: user.address.filter((a: any) => a._id != id),
+      })
+    );
+  } catch (error) {
+    handleError(error);
+  }
+}
+export async function saveAddress(address: any, user_id: any) {
+  try {
+    // Find the user by user_id
+    const user = await User.findById(user_id);
+
+    if (!user) {
+      return "User not found";
+    }
+
+    // Check if 'address' property exists and is an array, if not, create it
+    if (!user.address || !Array.isArray(user.address)) {
+      user.address = [];
+    }
+
+    // Use the push method to add the address to the 'address' array
+    user.address.push(address);
+
+    // Save the updated user
+    await user.save();
+    return JSON.parse(JSON.stringify({ addresses: user.address }));
+  } catch (error) {
+    handleError(error);
+  }
+}
+export async function applyCoupon(coupon: any, user_id: any) {
+  try {
+    const user = await User.findById(user_id);
+    const checkCoupon = await Coupon.findOne({ coupon });
+    if (!user) {
+      return { error: "User not found" };
+    }
+    if (checkCoupon == null) {
+      return { error: "Invalid Coupon" };
+    }
+    const id = new mongoose.Types.ObjectId(user_id.trim());
+    const { cartTotal } = await Cart.findOne({ user: user_id });
+    let totalAfterDiscount =
+      cartTotal - (cartTotal * checkCoupon.discount) / 100;
+    await Cart.findByIdAndUpdate(user._id, { totalAfterDiscount });
+    return JSON.parse(
+      JSON.stringify({
+        totalAfterDiscount: totalAfterDiscount.toFixed(2),
+        discount: checkCoupon.discount,
+      })
+    );
+  } catch (error) {}
 }
