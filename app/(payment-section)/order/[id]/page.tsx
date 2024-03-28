@@ -1,4 +1,5 @@
 import { getorderDetailsById } from "@/components/lib/actions/order.actions";
+import RazorPayPurchaseOrder from "@/components/shared/components/client/order/razorpay.purchase.order";
 import OrderProductStatusDrawer from "@/components/shared/components/order/order.product.status.drawer";
 import Image from "next/image";
 import React from "react";
@@ -104,12 +105,12 @@ const OrderPage = async ({ params }: { params: { id: string } }) => {
                         {product.status}
                       </span>
                     </div>
-                    <div className="absolute right-[1rem] bottom-[0rem] font-bold">
+                    <div className="absolute right-[1rem] bottom-[0rem] upto375:bottom-[-5px] font-bold">
                       Rs. {product.price * product.qty}
                     </div>
                   </div>
 
-                  <OrderProductStatusDrawer status={product.status} />
+                  {/* <OrderProductStatusDrawer status={product.status} /> */}
                 </div>
               ))}
               <div className="mt-[1rem] ">
@@ -241,6 +242,20 @@ const OrderPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </div>
       </div>
+      {/* <div className="fixed bottom-0 right-0 left-0">
+        <center>
+          {!orderData.isPaid && (
+            <div className="w-full py-[1rem] px-[1rem]">
+              {orderData.paymentMethod == "razorPay" && (
+                <RazorPayPurchaseOrder
+                  amount={orderData.total}
+                  orderId={orderId}
+                />
+              )}
+            </div>
+          )}
+        </center>
+      </div> */}
     </div>
   );
 };

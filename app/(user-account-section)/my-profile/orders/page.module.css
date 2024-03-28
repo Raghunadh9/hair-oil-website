@@ -1,0 +1,87 @@
+.header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.orders nav {
+  margin-top: 2rem;
+}
+.orders nav ul {
+  /* display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  */
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  gap: 2px;
+  height: 20px;
+}
+.orders nav ul li {
+  font-size: 15px;
+  color: #222;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.orders nav ul li:hover {
+  font-weight: 600;
+  border-bottom: 1px solid #222;
+}
+.orders table {
+  width: 100%;
+  margin-top: 1rem;
+}
+.orders table thead {
+  background: #222;
+  color: #fff;
+  font-weight: 600;
+}
+.orders table tbody td {
+  padding: 5px;
+}
+.orders table td {
+  text-align: center;
+}
+.orders table td svg {
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  stroke: #006081;
+}
+.orders table td svg:hover {
+  stroke: #006081;
+}
+.orders__images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+  background: #eee;
+  color: #222;
+}
+.orders__images img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.orders__paid img {
+  width: 25px !important;
+}
+.active {
+  font-weight: 600;
+  border-bottom: 1px solid #222;
+}
+.button {
+  width: 150px;
+  height: 50px;
+  color: #fff;
+  font-weight: 600;
+  background: #000;
+  cursor: pointer;
+  margin: 2rem 0 0 1rem;
+}
+.disabled {
+  cursor: not-allowed;
+  background: #eee;
+}

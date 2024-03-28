@@ -114,6 +114,12 @@ const orderSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
+    razorpay_order_id: {
+      type: String,
+    },
+    razorpay_payment_id: {
+      type: String,
+    },
 
     paidAt: {
       type: Date,

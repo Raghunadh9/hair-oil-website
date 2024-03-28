@@ -9,7 +9,13 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { BiWorld } from "react-icons/bi";
 import { CgLogOut } from "react-icons/cg";
 import { IoMdArrowUp } from "react-icons/io";
-import { FaBottleDroplet, FaBoxOpen, FaLink, FaRegUser } from "react-icons/fa6";
+import {
+  FaBottleDroplet,
+  FaBoxOpen,
+  FaHandsHolding,
+  FaLink,
+  FaRegUser,
+} from "react-icons/fa6";
 import {
   RiExternalLinkLine,
   RiSecurePaymentLine,
@@ -24,9 +30,10 @@ import { MdDeleteOutline } from "react-icons/md";
 import { IoIosRepeat } from "react-icons/io";
 import { FaAngleRight, FaShippingFast } from "react-icons/fa";
 import { BsCart, BsHeart, BsSearch, BsShop } from "react-icons/bs";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { GiHamburgerMenu, GiTreeBranch } from "react-icons/gi";
 import { TbMapPinSearch } from "react-icons/tb";
 import { CiBoxList } from "react-icons/ci";
+import { HiMiniMapPin } from "react-icons/hi2";
 
 export const ICONS = {
   right: <IoMdCheckmark />,
@@ -47,7 +54,7 @@ export const ICONS = {
   backArrow: <IoIosArrowBack />,
   eye: <MdOutlineRemoveRedEye />,
   cross: <RxCross2 />,
-  profile: <CgProfile />,
+  profile: <CgProfile size={25} />,
   plus: <FiPlusCircle />,
   delete: <MdDeleteOutline size={20} />,
   regenerate: <IoIosRepeat />,
@@ -72,4 +79,7 @@ export const ICONS = {
   fastShipping: <FaShippingFast size={20} />,
   safety: <MdHealthAndSafety size={20} />,
   rightBadge: <RiVerifiedBadgeFill size={20} />,
+  handmade: <FaHandsHolding size={20} />,
+  branch: <GiTreeBranch size={20} />,
+  map: <HiMiniMapPin size={25} />,
 };

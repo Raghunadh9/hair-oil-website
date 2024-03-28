@@ -5,7 +5,7 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div className="bg-[#F0F0F0] my-[5px]">
+    <div className="bg-[#F0F0F0] ">
       <Link href={"/"}>
         <Image
           src="/images/logo.png"
@@ -14,9 +14,8 @@ const Logo = () => {
           alt="logo"
           className="ml-1"
         />
-        <h2 className="text-xl">
-          <span className="font-bold">{config.websiteTitle.slice(0, 1)}</span>
-          <span className="">{config.websiteTitle.slice(1)}</span>
+        <h2 className="text-xl text-center">
+          <span className="font-bold">{config.websiteTitle}</span>
         </h2>
       </Link>
     </div>

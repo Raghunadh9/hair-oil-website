@@ -8,6 +8,7 @@ import Cart from "../database/models/cart.model";
 import Product from "../database/models/product.model";
 import Coupon from "../database/models/coupon.model";
 import mongoose from "mongoose";
+import Order from "../database/models/order.model";
 
 // CREATE
 export async function createUser(user: CreateUserParams) {
@@ -135,6 +136,7 @@ export async function getSavedCartForUser(userId: string) {
     handleError(error);
   }
 }
+// Address operations of user:
 export async function changeActiveAddress(id: any, user_id: any) {
   try {
     await connectToDatabase();
@@ -184,6 +186,7 @@ export async function deleteAddress(id: any, user_id: any) {
     handleError(error);
   }
 }
+
 export async function saveAddress(address: any, user_id: any) {
   try {
     // Find the user by user_id
@@ -208,8 +211,11 @@ export async function saveAddress(address: any, user_id: any) {
     handleError(error);
   }
 }
+
+// Coupon operations of user:
 export async function applyCoupon(coupon: any, user_id: any) {
   try {
+    await connectToDatabase();
     const user = await User.findById(user_id);
     const checkCoupon = await Coupon.findOne({ coupon });
     if (!user) {
@@ -229,5 +235,32 @@ export async function applyCoupon(coupon: any, user_id: any) {
         discount: checkCoupon.discount,
       })
     );
+  } catch (error) {}
+}
+// get All Orders of the user:
+export async function getAllUserOrders(clerkId: string, filter: string) {
+  try {
+    await connectToDatabase();
+    let user = await User.findOne({ clerkId });
+
+    let orders = [];
+    if (filter === "") {
+      orders = await Order.find({ user: user._id })
+        .sort({ createdAt: -1 })
+        .lean();
+    } else if (filter == "paid") {
+      orders = await Order.find({ user: user._id, isPaid: true })
+        .sort({ createdAt: -1 })
+        .lean();
+    } else if (filter == "unpaid") {
+      orders = await Order.find({ user: user._id, isPaid: false })
+        .sort({ createdAt: -1 })
+        .lean();
+    } else {
+      orders = await Order.find({ user: user._id, status: filter })
+        .sort({ createdAt: -1 })
+        .lean();
+    }
+    return JSON.parse(JSON.stringify(orders));
   } catch (error) {}
 }

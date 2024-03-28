@@ -2,6 +2,7 @@
 import {
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
@@ -79,7 +80,7 @@ const CartSheetContent = () => {
   };
 
   return (
-    <SheetContent className="z-[250] ">
+    <SheetContent className="z-[250]">
       {loading ? (
         <>
           {" "}
@@ -99,7 +100,7 @@ const CartSheetContent = () => {
               <div className="border-b border-b-gray-500"></div>
             </SheetTitle>
             <SheetDescription>
-              <div className="">
+              <div className="upto640:overflow-y-scroll">
                 {cart.map((product: any) => (
                   // SDeperate compnent here
                   <CartSheetItems
@@ -112,15 +113,17 @@ const CartSheetContent = () => {
               </div>
             </SheetDescription>
           </SheetHeader>
-          <div className="border-t-1 border-gray-400 absolute bottom-4 w-[90%]">
-            <CartSheetDetails
-              subtotal={subTotal}
-              shippingFee={shippingFee}
-              total={total}
-              cart={cart}
-              saveCartToDbHandler={saveCartToDbHandler}
-            />
-          </div>
+          <SheetFooter>
+            <div className="border-t-1 border-gray-400 absolute bottom-4 w-[90%]">
+              <CartSheetDetails
+                subtotal={subTotal}
+                shippingFee={shippingFee}
+                total={total}
+                cart={cart}
+                saveCartToDbHandler={saveCartToDbHandler}
+              />
+            </div>
+          </SheetFooter>
         </>
       )}
     </SheetContent>

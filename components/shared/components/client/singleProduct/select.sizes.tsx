@@ -17,7 +17,7 @@ const SelectSizes = ({
   const querySize =
     searchParams.get("size") === null ? null : Number(searchParams.get("size"));
   return (
-    <div className=" flex items-center flex-wrap gap-[1rem] max480:text-[15px]">
+    <div className=" flex items-center flex-wrap gap-[1rem] upto425:text-[15px]">
       {product.sizes.map((sizes: any, i: number) => (
         <Link
           href={`/product/${product.slug}?style=${style}&size=${i}`}

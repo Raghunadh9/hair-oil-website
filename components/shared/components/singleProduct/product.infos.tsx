@@ -17,7 +17,7 @@ const ProductInfo = ({
   size: number;
 }) => {
   return (
-    <div className="text-black leading-[50px] bg-white max840:!pt-[-4rem] max460:max-w-[340px] upto425:px-0 upto425:mx-0 ">
+    <div className="text-black leading-[50px] bg-white upto768:!pt-[-4rem] upto425:max-w-[340px] upto425:px-0 upto425:mx-0 ">
       <div className="">
         <h1 className="text-[30px] font-extrabold upto425:text-[20px]">
           {product.name}

@@ -49,7 +49,7 @@ const CartSheetItems = ({
       {" "}
       <div key={product._uid} className="flex gap-[10px] mb-[20px]">
         <Image
-          className="object-cover max480:w-[70px]"
+          className="object-cover upto425:w-[70px]"
           src={product.images[0].url}
           alt="images"
           width={100}

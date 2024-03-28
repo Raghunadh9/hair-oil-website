@@ -46,6 +46,9 @@ export async function getorderDetailsById(slug: string) {
   const orderData = await Order.findById(slug)
     .populate({ path: "user", model: User })
     .lean();
+  if (!orderData) {
+    return { error: "Order not found" };
+  }
 
   return JSON.parse(JSON.stringify(orderData));
 }

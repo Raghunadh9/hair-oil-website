@@ -205,17 +205,17 @@ const CheckoutPaymentandSummary = ({
             </div>
           </form>
         </div>
-        <button
-          className={`mt-[1rem] max400:fixed max400:bottom-0 w-full h-[45px] website-theme-color-bg text-white font-[600] rounded-md ${
+        <Button
+          className={`mt-[1rem] upto425:fixed upto425:bottom-0 w-full h-[45px] website-theme-color-bg text-white font-[600] rounded-md ${
             paymentMethod == ""
               ? "website-theme-color-bg_light cursor-not-allowed"
               : ""
           }`}
           onClick={() => placeOrderHandler()}
-          disabled={paymentMethod == "" ? true : false}
+          disabled={paymentMethod == "" ? true : false && placeOrderLoading}
         >
-          {placeOrderLoading ? "Loading..." : "Continue with payment"}
-        </button>
+          {placeOrderLoading ? "Loading..." : "Continue with Secure payment"}
+        </Button>
       </div>
     </div>
   );

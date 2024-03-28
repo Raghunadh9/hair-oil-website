@@ -11,8 +11,19 @@ export const Testimonials: TypeofTestimonials[] = [
   { name: "", image_url: "", rating: 0, review: "" },
 ];
 export const UserLoggedinLinks: TypeofNavLinks[] = [
-  { href: "/my-orders", key: "My Orders", text: "My Orders" },
+  { href: "/my-profile", key: "My Profile", text: "My Profile" },
+  {
+    href: "/my-profile/orders?tab=1&q=all-orders__",
+    key: "My Orders",
+    text: "My Orders",
+  },
+  {
+    href: "/my-profile/address",
+    key: "My Addresses",
+    text: "My Addresses",
+  },
   { href: "/track-order", key: "Track Order", text: "Track Order" },
+
   { href: "", key: "Logout", text: "Logout" },
 ];
 export const NavLinksMobile: TypeofNavLinks[] = [
@@ -21,16 +32,14 @@ export const NavLinksMobile: TypeofNavLinks[] = [
   { href: "/hair-oils", key: "Hair Oils", text: "Hair Oils" },
   { href: "/search-suggestions", key: "Search", text: "Search" },
   { href: "/favourites", key: "My Favourites", text: "My Favourites" },
-  { href: "/cart", key: "Cart", text: "Cart" },
-  { href: "/collections", key: "Collections", text: "Collections" },
 ];
 export const ProductBadgesDataLeft: TypeofProductBadgesData[] = [
   { title: "Secure Payments", icon: ICONS.securePay },
-  { title: "Free Shipping", icon: ICONS.fastShipping },
+  { title: "Natural Ingredients", icon: ICONS.branch },
 ];
 export const ProductBadgesDataRight: TypeofProductBadgesData[] = [
   { title: "Safety Certified", icon: ICONS.safety },
-  { title: "High Quality", icon: ICONS.rightBadge },
+  { title: "Hand Made", icon: ICONS.handmade },
 ];
 export const HomeShowcaseContent: TypeofHomeShowcaseContent[] = [
   {
@@ -138,5 +147,164 @@ export const paymentMethods: TypeofPaymentMethods[] = [
     description:
       "If you don't have a paypal account,you can also pay via paypal with your credit card or bank debit card. Payment can be submitted in any currency!",
     images: [],
+  },
+];
+export const ProfilePagesidebarData = [
+  {
+    heading: "My Account",
+    links: [
+      {
+        name: "My Profile",
+        link: "/profile",
+      },
+      {
+        name: "Addresses",
+        link: "/profile/address",
+      },
+      {
+        name: "My Payment Options",
+        link: "/profile/payment",
+      },
+      {
+        name: "Account Security",
+        link: "/profile/security",
+      },
+    ],
+  },
+  {
+    heading: "My Orders",
+    links: [
+      {
+        name: "All Orders",
+        link: "/profile/orders",
+        filter: "",
+      },
+      {
+        name: "Paid Orders",
+        link: "/profile/orders",
+        filter: "paid",
+      },
+      {
+        name: "Unpaid Orders",
+        link: "/profile/orders",
+        filter: "unpaid",
+      },
+
+      {
+        name: "Processing Orders",
+        link: "/profile/orders",
+        filter: "Processing",
+      },
+      {
+        name: "Unprocessed Orders",
+        link: "/profile/orders",
+        filter: "Not Processed",
+      },
+      {
+        name: "Dispatched Orders",
+        link: "/profile/orders",
+        filter: "Dispatched",
+      },
+      {
+        name: "Delievered Orders",
+        link: "/profile/orders",
+        filter: "Completed",
+      },
+      {
+        name: "Cancelled Orders",
+        link: "/profile/orders",
+        filter: "Cancelled",
+      },
+    ],
+  },
+  {
+    heading: "My Lists",
+    links: [
+      {
+        name: "Whishlist",
+        link: "/profile/wishlist",
+      },
+      {
+        name: "Recently Viewed",
+        link: "/profile/recent",
+      },
+    ],
+  },
+  {
+    heading: "Customer Service",
+    links: [
+      {
+        name: "My Message",
+        link: "/profile/messages",
+      },
+      {
+        name: "Service Records",
+        link: "/profile/services",
+      },
+    ],
+  },
+  {
+    heading: "Other Services",
+    links: [
+      {
+        name: "Survey Center",
+      },
+      {
+        name: "Contact Preferences",
+      },
+    ],
+  },
+  {
+    heading: "Policy",
+    links: [
+      {
+        name: "Shipping Info",
+      },
+      {
+        name: "Return Policy",
+      },
+      {
+        name: "Privacy & Cookie Policy",
+      },
+    ],
+  },
+  {
+    heading: "Sign out",
+    link: [],
+  },
+];
+
+export const ProfilePageordersLinks = [
+  {
+    name: "All Orders",
+    filter: "",
+  },
+  {
+    name: "Paid Orders",
+    filter: "paid",
+  },
+  {
+    name: "Unpaid Orders",
+    filter: "unpaid",
+  },
+  {
+    name: "Processing Orders",
+    filter: "Processing",
+  },
+  {
+    name: "Unprocessed Orders",
+    filter: "Not Processed",
+  },
+  {
+    name: "Dispatched Orders",
+    filter: "Dispatched",
+  },
+  {
+    name: "Delievered Orders",
+    filter: "Delievered",
+  },
+  {
+    name: "Cancelled Orders",
+    filter: "Cancelled",
   },
 ];

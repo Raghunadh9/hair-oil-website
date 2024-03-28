@@ -3,6 +3,7 @@ import Link from "next/link";
 import { NavLinks, UserLoggedinLinks } from "@/config/constants";
 import { Button } from "@nextui-org/react";
 import { ICONS } from "./icons";
+
 import MobileHamburgerSheet from "../responsive/components/mobile.hamburger.sheet";
 import {
   SignOutButton,
@@ -22,6 +23,8 @@ import Logo from "./logo/logo";
 import { CartNumber } from "./client/singleProduct/cart.count";
 import CartSheetContent from "./cart/cart.sheet";
 const Navbar = async () => {
+  const { user } = auth();
+
   return (
     <nav className="flexBetween navbar shadow-md sticky top-0 z-[200] bg-white  upto425:z-[10]">
       <div className="flex-1 flexStart gap-10 bg-">
@@ -71,7 +74,7 @@ const Navbar = async () => {
             {/* Popover */}
             <Popover>
               <PopoverTrigger asChild>
-                <Button className={"website-theme-color-bg"}>
+                <Button className={"bg-transparent underline"}>
                   {ICONS.user} Account
                 </Button>
               </PopoverTrigger>
@@ -79,14 +82,21 @@ const Navbar = async () => {
                 {UserLoggedinLinks.map((link, index) => (
                   <div
                     key={link.text}
-                    className="flex flex-row mb-5 justify-between font-bold text-[15px]"
+                    className="flex flex-row my-5 justify-between font-bold text-[15px]"
                   >
                     <Link href={link.href}>
                       {link.text === "Logout" ? <SignOutButton /> : link.text}
                     </Link>
+                    {link.href === "/my-profile" && (
+                      <span className="">{ICONS.profile}</span>
+                    )}
 
-                    {link.href === "/my-orders" && (
+                    {link.href ===
+                      "/my-profile/orders?tab=1&q=all-orders__" && (
                       <span className="">{ICONS.order}</span>
+                    )}
+                    {link.href === "/my-profile/address" && (
+                      <span className="">{ICONS.map}</span>
                     )}
                     {link.href === "/hair-oils" && (
                       <span>{ICONS.oilBottleMobile}</span>

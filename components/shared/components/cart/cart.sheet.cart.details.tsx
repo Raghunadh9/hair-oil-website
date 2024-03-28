@@ -16,7 +16,7 @@ const CartSheetDetails = ({
   saveCartToDbHandler: () => Promise<void>;
 }) => {
   return (
-    <div>
+    <div className="bg-white">
       <div className="flex text-[14px] items-center justify-between ">
         <span>Subtotal</span>
         <span>Rs. {subtotal}</span>

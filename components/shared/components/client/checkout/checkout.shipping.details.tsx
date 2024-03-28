@@ -1,7 +1,6 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@nextui-org/react";
-import { error } from "console";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -18,6 +17,7 @@ import {
   deleteAddress,
   saveAddress,
 } from "@/components/lib/actions/user.actions";
+import toast from "react-hot-toast";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -77,10 +77,12 @@ const CheckoutShippingDetails = ({
   const changeActiveHandler = async (id: any) => {
     const res = await changeActiveAddress(id, user._id);
     setAddresses(res.addresses);
+    toast.success("Active Address Successfully switched.");
   };
   const deleteHandler = async (id: string) => {
     const res = await deleteAddress(id, user._id);
     setAddresses(res.addresses);
+    toast.success("Successfully deleted address");
   };
   const {
     register,
@@ -93,9 +95,9 @@ const CheckoutShippingDetails = ({
 
   const onSubmit: SubmitHandler<FormField> = async (data) => {
     try {
-      console.log(data);
       const res = await saveAddress(data, user._id);
       setAddresses(res.addresses);
+      toast.success("Successfully added new address");
     } catch (error: any) {
       setError("root", { message: error });
     }
@@ -190,7 +192,7 @@ const CheckoutShippingDetails = ({
             <IoMdArrowDropupCircle className="text-[2rem] fill-[#222]" />
           </span>
         ) : (
-          <span className="flex items-center justify-center gap-[5px] max400:p-[2px] disabled:blue_col_bg_disabled">
+          <span className="flex items-center justify-center gap-[5px] upto425:p-[2px] disabled:blue_col_bg_disabled">
             ADD NEW ADDRESS
             <AiOutlinePlus />
           </span>

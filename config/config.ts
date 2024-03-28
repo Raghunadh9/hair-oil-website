@@ -7,10 +7,10 @@ type ConfigType = {
   websiteGreatness: string;
 };
 export const config: ConfigType = {
-  websiteTitle: "E herb",
+  websiteTitle: "HERBE",
   websiteUrl: "http://localhost:3000",
   websiteLogo: "",
-  websiteDescription: `E herb :Discover the Essence of Radiance with Our Nourishing Hair Oils.`,
+  websiteDescription: `HERBE: Discover the Essence of Radiance with Our Nourishing Hair Oils.`,
   websiteThemeColor: "#7BCAD7",
   websiteGreatness: "India's leading hair oil selling platform.",
 };
