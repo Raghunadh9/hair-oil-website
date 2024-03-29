@@ -5,7 +5,7 @@ const CheckoutUserProducts = ({ cart }: { cart: any }) => {
   return (
     <div className="border border-[#ccc] p-[1rem] mt-[1rem]">
       <div className="flex items-center justify-between ">
-        <h1 className=" text-xl text-black">Cart</h1>
+        <h1 className="text-black text-2xl font-bold">Cart</h1>
         <span className="font-bold">
           {cart.products.length == 1
             ? "1 item"

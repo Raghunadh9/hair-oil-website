@@ -2,11 +2,14 @@
 
 import { getProductDetailsById } from "@/components/lib/actions/product.actions";
 import { useCartStore } from "@/components/store/cart.store";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BsHandbagFill, BsHeart } from "react-icons/bs";
 import { TbMinus, TbPlus } from "react-icons/tb";
+import { toast as sonnerToast } from "sonner";
+import { ICONS } from "../../icons";
 
 const QtyButtons = ({
   product,
@@ -48,6 +51,7 @@ const QtyButtons = ({
         product.style,
         frontEndSize
       );
+      console.log("data", data);
       if (qty > data.quantity) {
         toast.error("The quantity you have choosed is more than in stock!");
 
@@ -67,7 +71,17 @@ const QtyButtons = ({
             return p;
           });
           updateCart(newCart);
-          toast.success("Product successfully updated!");
+          sonnerToast(
+            <div className="flex justify-center items-center gap-[20px]">
+              <Image src={data.images[0].url} alt="_" height={30} width={30} />
+              <div className="flex items-center justify-center text-xl upto640:text-[15px]">
+                Product updated successfully {ICONS.right}
+              </div>
+            </div>,
+            {
+              duration: 2000,
+            }
+          );
         } else {
           addToCart({
             ...data,
@@ -75,8 +89,17 @@ const QtyButtons = ({
             size: data.size,
             _uid,
           });
-
-          toast.success("Product added to cart successfully!");
+          sonnerToast(
+            <div className="flex justify-center items-center gap-[20px]">
+              <Image src={data.images[0].url} alt="_" height={30} width={30} />
+              <div className="flex items-center justify-center text-xl upto640:text-[15px]">
+                Product added to cart {ICONS.right}
+              </div>
+            </div>,
+            {
+              duration: 2000,
+            }
+          );
         }
       }
     } catch (error) {

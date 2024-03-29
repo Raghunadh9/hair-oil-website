@@ -6,6 +6,7 @@ import Navbar from "@/components/shared/components/Navbar";
 import Footer from "@/components/shared/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import toast, { Toaster } from "react-hot-toast";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 
 const montserrat = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           <main className="">{children}</main>
           <Footer />
           <Toaster />
+          <SonnerToaster position="top-right" />
         </body>
       </html>
     </ClerkProvider>

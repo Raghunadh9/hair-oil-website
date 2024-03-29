@@ -8,7 +8,6 @@ export default authMiddleware({
   // publicRoutes: ['/anyone-can-visit-this-route'],
   // Prevent the specified routes from accessing
   // authentication information:
-  // ignoredRoutes: ['/no-auth-in-this-route'],
   publicRoutes: [
     "/",
     "/api/webhooks/clerk",
@@ -18,6 +17,8 @@ export default authMiddleware({
     "/hair-oils",
     "/search-suggestions",
     "/favourites",
+    "/track-order",
+    "/product/(.*)",
   ],
 });
 

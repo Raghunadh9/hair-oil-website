@@ -2,7 +2,6 @@
 import { getorderDetailsById } from "@/components/lib/actions/order.actions";
 import { LoadingSpinner } from "@/components/shared/components/loading-spinner/loading-spinner";
 import { Input } from "@/components/ui/input";
-import { useClerk } from "@clerk/nextjs";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -10,12 +9,10 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 const OrderTracking = () => {
-  const { user } = useClerk();
   const router = useRouter();
 
   const [orderId, setOrderId] = useState("");
   const [loading, setLoading] = useState(false);
-  if (!user?.id) return;
   const searchOrderById = async (e: any) => {
     setLoading(true);
     e.preventDefault();

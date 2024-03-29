@@ -107,7 +107,7 @@ const CheckoutShippingDetails = ({
     <div className="flex flex-col items-center gap-[1rem] upto640:text-[11px]">
       {!profile && (
         <div className="w-full pb-[5px] border-b border-b-[#e5e5e5]  ">
-          <h2 className="text-xl text-black">Your Addresses</h2>
+          <h2 className="text-black text-2xl font-bold">Your Addresses</h2>
         </div>
       )}
       <div className="flex flex-col gap-[1rem] w-full ">

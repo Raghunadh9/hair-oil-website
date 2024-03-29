@@ -42,7 +42,7 @@ import { HiMiniMapPin } from "react-icons/hi2";
 import { LuBox } from "react-icons/lu";
 
 export const ICONS = {
-  right: <IoMdCheckmark />,
+  right: <IoMdCheckmark size={25} />,
   homeMobile: <TiHomeOutline size={25} />,
   dashboard: <MdOutlineDashboard />,
   write: <GoPencil />,

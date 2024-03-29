@@ -101,7 +101,7 @@ const CheckoutPaymentandSummary = ({
       <div className=" justify-center items-center">
         {!profile && (
           <div className="">
-            <h3 className="text-xl text-black">Payment Method</h3>
+            <h3 className="text-black text-2xl font-bold">Payment Method</h3>
           </div>
         )}
         {paymentMethods.map((pm: any, i: number) => (
