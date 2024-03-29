@@ -77,7 +77,13 @@ const Navbar = async () => {
                     className="flex flex-row my-5 justify-between font-bold text-[15px]"
                   >
                     <Link href={link.href}>
-                      {link.text === "Logout" ? <SignOutButton /> : link.text}
+                      {link.text === "Logout" ? (
+                        <span className="border-none">
+                          <SignOutButton />
+                        </span>
+                      ) : (
+                        link.text
+                      )}
                     </Link>
                     {link.href === "/my-profile" && (
                       <span className="">{ICONS.profile}</span>
