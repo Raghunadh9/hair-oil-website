@@ -1,7 +1,8 @@
+"use client";
 import { SignUp } from "@clerk/nextjs";
 
 const SignUpPage = () => {
-  return <SignUp />;
+  return <SignUp signInUrl="/sign-in" />;
 };
 
 export default SignUpPage;

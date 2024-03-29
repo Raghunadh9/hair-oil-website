@@ -64,7 +64,7 @@ const Navbar = async () => {
                   >
                     <Link href={link.href}>
                       {link.text === "Logout" ? (
-                        <span className="border-none">
+                        <span className="border-none outline-none">
                           <SignOutButton />
                         </span>
                       ) : (
