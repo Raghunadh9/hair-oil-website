@@ -8,9 +8,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { z } from "zod";
-import { useAuth } from "@clerk/nextjs";
 
+import { LoadingSpinner } from "../../loading-spinner/loading-spinner";
 const CheckoutPaymentandSummary = ({
   cart,
   user,
@@ -20,19 +19,17 @@ const CheckoutPaymentandSummary = ({
   user: TypeofDBUser;
   profile?: any;
 }) => {
-  const { userId } = useAuth();
-
   const [paymentMethod, setPaymentMethod] = useState("");
   const [totalAfterDiscount, setTotalAfterDiscount] = useState("");
   const [addresses, setAddresses] = useState<any>(user?.address || []);
   const [selectedAddress, setSelectedAddress] = useState("");
   const [coupon, setCoupon] = useState("");
   const router = useRouter();
+
   const [discount, setDiscount] = useState("");
   const [error, setError] = useState("");
   const [placeOrderLoading, setPlaceOrderLoading] = useState<boolean>(false);
   const [couponLoading, setCouponLoading] = useState<boolean>(false);
-  const [order_error, setOrder_Error] = useState("");
   useEffect(() => {
     if (user?.address) {
       setAddresses(user.address);
@@ -46,9 +43,7 @@ const CheckoutPaymentandSummary = ({
       setSelectedAddress("");
     }
   }, [addresses]);
-  const validateCoupon = z.object({
-    coupon: z.string(),
-  });
+
   const applyCouponHandler = async (e: any) => {
     e.preventDefault();
     setCouponLoading(true);
@@ -70,21 +65,13 @@ const CheckoutPaymentandSummary = ({
         toast.error("Please choose a payment method.");
         return;
       } else if (!selectedAddress) {
-        toast.error("Please choose a shipping address.");
+        toast.error(
+          "Please choose at least one shipping address by clicking one of the addresses you have."
+        );
+        setPlaceOrderLoading(false);
         return;
       }
       try {
-        // const response = await fetch("/api/order/create", {
-        //   cache: "no-store",
-
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-
-        //   }),
-        // });
         const res = await createOrder({
           products: cart.products,
           shippingAddress: selectedAddress,
@@ -173,15 +160,22 @@ const CheckoutPaymentandSummary = ({
           >
             <Input
               type="text"
+              className="input-field"
               placeholder="*Coupon"
               onChange={(e: any) => setCoupon(e.target.value)}
               required
             />
             <Button
               type="submit"
-              className="mt-[-10px] w-full h-[40px] bg-black text-whitefont-[600]  text-white rounded-md"
+              className="mt-[10px] w-full h-[40px] bg-black text-whitefont-[600]  text-white rounded-md"
             >
-              {couponLoading ? "Loading..." : " Apply Coupon"}
+              {couponLoading ? (
+                <div className="flex gap-[10px]">
+                  <LoadingSpinner /> Loading...
+                </div>
+              ) : (
+                " Apply Coupon"
+              )}
             </Button>
             {error && <span className={" text-red-500"}>{error}</span>}
 
@@ -212,9 +206,19 @@ const CheckoutPaymentandSummary = ({
               : ""
           }`}
           onClick={() => placeOrderHandler()}
-          disabled={paymentMethod == "" ? true : false && placeOrderLoading}
+          disabled={
+            paymentMethod == ""
+              ? true
+              : false && placeOrderLoading && addresses.length == 0
+          }
         >
-          {placeOrderLoading ? "Loading..." : "Continue with Secure payment"}
+          {placeOrderLoading ? (
+            <div className="flex gap-[10px]">
+              <LoadingSpinner /> Loading...
+            </div>
+          ) : (
+            "Continue with Secure payment"
+          )}
         </Button>
       </div>
     </div>

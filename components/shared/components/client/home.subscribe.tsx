@@ -30,7 +30,11 @@ export function BackgroundGradientDemo() {
             </p>
             {/* <div className="flex justify-center flex-col w-full max-w-md items-center space-y-3 from640:px-[60px]"> */}
             <div className="my-5">
-              <Input type="email" placeholder="Email" className="mb-[10px]" />
+              <Input
+                type="email"
+                placeholder="Email"
+                className="mb-[10px] input-field"
+              />
               <Button className="bg-white text-black" type="submit">
                 Subscribe
               </Button>

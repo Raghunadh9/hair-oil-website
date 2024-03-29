@@ -20,7 +20,7 @@ const CarouselComponent = () => {
       opts={{
         align: "start",
       }}
-      className="w-full max-w-full pl-1  "
+      className="w-full max-w-full pl-1 "
     >
       <CarouselContent className="">
         {Array.from({ length: 5 }).map((_, index) => (

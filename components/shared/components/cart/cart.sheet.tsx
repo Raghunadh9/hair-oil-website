@@ -1,5 +1,6 @@
 "use client";
 import {
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -18,6 +19,7 @@ import CartSheetItems from "./cart.sheet.items";
 import CartSheetDetails from "./cart.sheet.cart.details";
 import { Spinner } from "@nextui-org/react";
 import { useAuth } from "@clerk/nextjs";
+import { LoadingSpinner } from "../loading-spinner/loading-spinner";
 
 const CartSheetContent = () => {
   const router = useRouter();
@@ -84,7 +86,9 @@ const CartSheetContent = () => {
       {loading ? (
         <>
           {" "}
-          <Spinner label="Primary" color="primary" labelColor="primary" />
+          <div className="flex gap-[10px]">
+            <LoadingSpinner /> Loading...
+          </div>
         </>
       ) : (
         <>

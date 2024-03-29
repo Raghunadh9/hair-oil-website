@@ -17,7 +17,7 @@ import {
 import { Button } from "@nextui-org/react";
 import { UserLoggedinLinks } from "@/config/constants";
 import { ICONS } from "../icons";
-const MobileHamburgerSheetUser = () => {
+const MobileHamburgerSheetUser = ({ setOpen }: { setOpen: any }) => {
   const { user } = useClerk();
   return (
     <SheetTitle>
@@ -36,9 +36,9 @@ const MobileHamburgerSheetUser = () => {
               {UserLoggedinLinks.map((link, index) => (
                 <div
                   key={link.text}
-                  className="flex flex-row my-5 justify-between font-bold text-[15px]"
+                  className="flex flex-row my-5 justify-between font-bold text-[15px] "
                 >
-                  <Link href={link.href}>
+                  <Link onClick={() => setOpen(false)} href={link.href}>
                     {link.text === "Logout" ? <SignOutButton /> : link.text}
                   </Link>
                   {link.href === "/my-profile" && (

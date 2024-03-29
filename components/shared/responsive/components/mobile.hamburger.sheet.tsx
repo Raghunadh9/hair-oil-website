@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { ICONS } from "../../components/icons";
 import {
@@ -15,15 +16,18 @@ import { config } from "@/config/config";
 import Image from "next/image";
 import { SignedIn, SignedOut, SignOutButton } from "@clerk/nextjs";
 import MobileHamburgerSheetUser from "../../components/client/mobile.hamburger.sheet.user";
+import { useState } from "react";
 
 const MobileHamburgerSheet = () => {
+  const [sheetOpen, setSheetOpen] = useState(false);
+
   return (
     <div className="flexCenter gap-4 from425:hidden">
-      <Sheet>
+      <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
         <SheetTrigger>{ICONS.hamburger}</SheetTrigger>
         <SheetContent>
           <SheetHeader>
-            <MobileHamburgerSheetUser />
+            <MobileHamburgerSheetUser setOpen={setSheetOpen} />
             <SheetDescription>
               <div>
                 <SignedOut>
@@ -42,9 +46,14 @@ const MobileHamburgerSheet = () => {
                 key={link.text}
                 className="flex flex-row mb-5 justify-between font-bold text-[15px]"
               >
-                <Link href={link.href}>{link.text}</Link>
+                <Link onClick={() => setSheetOpen(false)} href={link.href}>
+                  {link.text}
+                </Link>
                 {link.href === "/" && (
                   <span className="">{ICONS.homeMobile}</span>
+                )}
+                {link.href === "/track-order" && (
+                  <span className="">{ICONS.orderBoxMobile}</span>
                 )}
                 {link.href === "/shop" && (
                   <span className="">{ICONS.shopMobile}</span>

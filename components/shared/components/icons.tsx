@@ -10,6 +10,7 @@ import { BiWorld } from "react-icons/bi";
 import { CgLogOut } from "react-icons/cg";
 import { IoMdArrowUp } from "react-icons/io";
 import {
+  FaArrowDown,
   FaBottleDroplet,
   FaBoxOpen,
   FaHandsHolding,
@@ -28,12 +29,17 @@ import { CgProfile } from "react-icons/cg";
 import { FiPlusCircle, FiUser } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoIosRepeat } from "react-icons/io";
-import { FaAngleRight, FaShippingFast } from "react-icons/fa";
+import {
+  FaAngleRight,
+  FaRegArrowAltCircleDown,
+  FaShippingFast,
+} from "react-icons/fa";
 import { BsCart, BsHeart, BsSearch, BsShop } from "react-icons/bs";
 import { GiHamburgerMenu, GiTreeBranch } from "react-icons/gi";
 import { TbMapPinSearch } from "react-icons/tb";
 import { CiBoxList } from "react-icons/ci";
 import { HiMiniMapPin } from "react-icons/hi2";
+import { LuBox } from "react-icons/lu";
 
 export const ICONS = {
   right: <IoMdCheckmark />,
@@ -82,4 +88,6 @@ export const ICONS = {
   handmade: <FaHandsHolding size={20} />,
   branch: <GiTreeBranch size={20} />,
   map: <HiMiniMapPin size={25} />,
+  downArrow: <FaArrowDown size={15} />,
+  orderBoxMobile: <LuBox size={20} />,
 };

@@ -5,13 +5,7 @@ import { Button } from "@nextui-org/react";
 import { ICONS } from "./icons";
 
 import MobileHamburgerSheet from "../responsive/components/mobile.hamburger.sheet";
-import {
-  SignOutButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  auth,
-} from "@clerk/nextjs";
+import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import {
   Popover,
   PopoverContent,
@@ -23,10 +17,8 @@ import Logo from "./logo/logo";
 import { CartNumber } from "./client/singleProduct/cart.count";
 import CartSheetContent from "./cart/cart.sheet";
 const Navbar = async () => {
-  const { user } = auth();
-
   return (
-    <nav className="flexBetween navbar shadow-md sticky top-0 z-[200] bg-white  upto425:z-[10]">
+    <nav className="flexBetween navbar shadow-md sticky top-0 z-[200] bg-white  upto425:z-[10] h-[90px]">
       <div className="flex-1 flexStart gap-10 bg-">
         <Logo />
 
@@ -74,9 +66,9 @@ const Navbar = async () => {
             {/* Popover */}
             <Popover>
               <PopoverTrigger asChild>
-                <Button className={"bg-transparent underline"}>
-                  {ICONS.user} Account
-                </Button>
+                <div className="flex items-center gap-[5px] cursor-pointer">
+                  Account <span className="">{ICONS.downArrow}</span>
+                </div>
               </PopoverTrigger>
               <PopoverContent className="w-80">
                 {UserLoggedinLinks.map((link, index) => (

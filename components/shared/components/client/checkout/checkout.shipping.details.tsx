@@ -18,6 +18,7 @@ import {
   saveAddress,
 } from "@/components/lib/actions/user.actions";
 import toast from "react-hot-toast";
+import { LoadingSpinner } from "../../loading-spinner/loading-spinner";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -199,20 +200,30 @@ const CheckoutShippingDetails = ({
         )}
       </button>
       {visible && (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+          <div className="flex flex-row gap-[1rem] mb-[10px]">
+            <Input
+              className="input-field"
+              type="text"
+              placeholder="firstName"
+              {...register("firstName")}
+            />
+            {errors.firstName && (
+              <div className="text-red-500">{errors.firstName.message}</div>
+            )}
+            <Input
+              className="input-field"
+              type="text"
+              placeholder="lastName"
+              {...register("lastName")}
+            />
+            {errors.lastName && (
+              <div className="text-red-500">{errors.lastName.message}</div>
+            )}
+          </div>
+
           <Input
-            type="text"
-            placeholder="firstName"
-            {...register("firstName")}
-          />
-          {errors.firstName && (
-            <div className="text-red-500">{errors.firstName.message}</div>
-          )}
-          <Input type="text" placeholder="lastName" {...register("lastName")} />
-          {errors.lastName && (
-            <div className="text-red-500">{errors.lastName.message}</div>
-          )}
-          <Input
+            className="input-field mb-[10px]"
             type="text"
             placeholder="phoneNumber"
             {...register("phoneNumber")}
@@ -220,27 +231,59 @@ const CheckoutShippingDetails = ({
           {errors.phoneNumber && (
             <div className="text-red-500">{errors.phoneNumber.message}</div>
           )}
-          <Input type="text" placeholder="state" {...register("state")} />
-          {errors.state && (
-            <div className="text-red-500">{errors.state.message}</div>
-          )}
-          <Input type="text" placeholder="city" {...register("city")} />
-          {errors.city && (
-            <div className="text-red-500">{errors.city.message}</div>
-          )}
-          <Input type="text" placeholder="zipCode" {...register("zipCode")} />
+          <div className="flex flex-row gap-[1rem] mb-[10px]">
+            <Input
+              className="input-field"
+              type="text"
+              placeholder="state"
+              {...register("state")}
+            />
+            {errors.state && (
+              <div className="text-red-500">{errors.state.message}</div>
+            )}
+            <Input
+              className="input-field"
+              type="text"
+              placeholder="city"
+              {...register("city")}
+            />
+            {errors.city && (
+              <div className="text-red-500">{errors.city.message}</div>
+            )}
+          </div>
+          <Input
+            className="input-field mb-[10px]"
+            type="text"
+            placeholder="zipCode"
+            {...register("zipCode")}
+          />
           {errors.zipCode && (
             <div className="text-red-500">{errors.zipCode.message}</div>
           )}
-          <Input type="text" placeholder="address1" {...register("address1")} />
+          <Input
+            className="input-field mb-[10px]"
+            type="text"
+            placeholder="address1"
+            {...register("address1")}
+          />
           {errors.address1 && (
             <div className="text-red-500">{errors.address1.message}</div>
           )}
-          <Input type="text" placeholder="address2" {...register("address2")} />
+          <Input
+            className="input-field mb-[10px]"
+            type="text"
+            placeholder="address2"
+            {...register("address2")}
+          />
           {errors.address2 && (
             <div className="text-red-500">{errors.address2.message}</div>
           )}
-          <Input type="text" placeholder="country" {...register("country")} />
+          <Input
+            className="input-field mb-[10px]"
+            type="text"
+            placeholder="country"
+            {...register("country")}
+          />
           {errors.country && (
             <div className="text-red-500">{errors.country.message}</div>
           )}
@@ -248,9 +291,15 @@ const CheckoutShippingDetails = ({
           <Button
             disabled={isSubmitting}
             type="submit"
-            className="website-theme-color-bg"
+            className="website-theme-secondary_color_bg text-white"
           >
-            {isSubmitting ? "Loading..." : "Submit"}
+            {isSubmitting ? (
+              <div className="flex gap-[10px]">
+                <LoadingSpinner /> Loading...
+              </div>
+            ) : (
+              "Save Address"
+            )}
           </Button>
           {errors.root && (
             <div className="text-red-500">{errors.root.message}</div>

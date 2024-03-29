@@ -12,7 +12,7 @@ import ProductShowCase from "@/components/shared/components/home/home.showcase";
 const Home = async () => {
   const products: TypefAllProducts = await getAllProducts();
   return (
-    <div className="mt-3 mb-5">
+    <div className="  mb-5 ">
       {/* <HomeBanner /> */}
       <CarouselComponent />
       <HomeFeatures />

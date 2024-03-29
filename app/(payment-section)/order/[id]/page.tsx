@@ -106,7 +106,7 @@ const OrderPage = async ({ params }: { params: { id: string } }) => {
                       </span>
                     </div>
                     <div className="absolute right-[1rem] bottom-[0rem] upto375:bottom-[-5px] font-bold">
-                      Rs. {product.price * product.qty}
+                      Rs. {(product.price * product.qty).toFixed(2)}
                     </div>
                   </div>
 

@@ -1,4 +1,5 @@
 "use server";
+import mongoose from "mongoose";
 import { connectToDatabase } from "../database/db";
 import Order from "../database/models/order.model";
 import User from "../database/models/user.model";
