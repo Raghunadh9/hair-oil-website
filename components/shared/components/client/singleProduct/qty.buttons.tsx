@@ -73,7 +73,7 @@ const QtyButtons = ({
           updateCart(newCart);
           sonnerToast(
             <div className="flex justify-center items-center gap-[20px]">
-              <Image src={data.images[0].url} alt="_" height={30} width={30} />
+              <Image src={data.images[0].url} alt="_" height={50} width={50} />
               <div className="flex items-center justify-center text-xl upto640:text-[15px]">
                 Product updated successfully {ICONS.right}
               </div>
@@ -91,7 +91,7 @@ const QtyButtons = ({
           });
           sonnerToast(
             <div className="flex justify-center items-center gap-[20px]">
-              <Image src={data.images[0].url} alt="_" height={30} width={30} />
+              <Image src={data.images[0].url} alt="_" height={40} width={40} />
               <div className="flex items-center justify-center text-xl upto640:text-[15px]">
                 Product added to cart {ICONS.right}
               </div>
@@ -127,7 +127,7 @@ const QtyButtons = ({
       </div>
       <div className="">
         {product.quantity < 1 && (
-          <span className="text-red-500 bg-red-300 ">
+          <span className="text-red-500">
             Unfortunately, the chosen size is not available in our inventory.
           </span>
         )}

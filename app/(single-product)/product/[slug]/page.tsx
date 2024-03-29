@@ -67,8 +67,10 @@ const SingleProductPage = async ({
                 {product.category.name}
               </BreadcrumbLink>
               <BreadcrumbLink>
-                {product.subCategories.map((sub: any) => (
-                  <span className="upto425:text-[10px] ">{sub.name}</span>
+                {product.subCategories.map((sub: any, index: number) => (
+                  <span className="upto425:text-[10px] " key={index}>
+                    {sub.name}
+                  </span>
                 ))}
               </BreadcrumbLink>
             </BreadcrumbItem>

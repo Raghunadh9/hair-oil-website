@@ -1,6 +1,5 @@
 "use client";
 import {
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -17,11 +16,10 @@ import { useRouter } from "next/navigation";
 import { saveCartForUser } from "@/components/lib/actions/user.actions";
 import CartSheetItems from "./cart.sheet.items";
 import CartSheetDetails from "./cart.sheet.cart.details";
-import { Spinner } from "@nextui-org/react";
 import { useAuth } from "@clerk/nextjs";
 import { LoadingSpinner } from "../loading-spinner/loading-spinner";
 
-const CartSheetContent = () => {
+const CartSheetContent = ({ setOpen }: { setOpen: any }) => {
   const router = useRouter();
   const { userId } = useAuth();
 
@@ -125,6 +123,7 @@ const CartSheetContent = () => {
                 total={total}
                 cart={cart}
                 saveCartToDbHandler={saveCartToDbHandler}
+                setOpen={setOpen}
               />
             </div>
           </SheetFooter>

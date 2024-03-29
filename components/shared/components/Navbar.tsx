@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { NavLinks, UserLoggedinLinks } from "@/config/constants";
 import { Button } from "@nextui-org/react";
@@ -11,11 +10,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 
 import Logo from "./logo/logo";
-import { CartNumber } from "./client/singleProduct/cart.count";
-import CartSheetContent from "./cart/cart.sheet";
+import FullCartSheet from "./cart/cart.full.sheet";
+
 const Navbar = async () => {
   return (
     <nav className="flexBetween navbar shadow-md sticky top-0 z-[200] bg-white  upto425:z-[10] h-[90px]">
@@ -42,19 +40,7 @@ const Navbar = async () => {
           </Link>
         </div>
 
-        <Sheet>
-          <SheetTrigger>
-            {" "}
-            <div className="cursor-pointer relative ">
-              {ICONS.cart}
-              <span className="absolute bottom-3 rounded-full website-theme-color-bg w-4 h-4 p-0 right-[-5px] text-white text-[12px] leading-tight text-center">
-                <CartNumber />
-              </span>
-            </div>
-          </SheetTrigger>
-          <CartSheetContent />
-        </Sheet>
-
+        <FullCartSheet />
         <div className="upto425:hidden">
           <SignedOut>
             {" "}

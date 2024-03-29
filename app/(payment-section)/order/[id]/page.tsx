@@ -168,7 +168,7 @@ const OrderPage = async ({ params }: { params: { id: string } }) => {
             <center>
               <div className="py-0 px-[1rem] ">
                 <h1 className="text-black text-2xl font-bold mt-[1rem] border-b border-gray-300 ">
-                  Customer's Order
+                  Customer&apos;s Order
                 </h1>
                 <div className="pb-[10px] ">
                   <div className="flex gap-[10px] items-center">

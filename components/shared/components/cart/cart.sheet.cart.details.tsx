@@ -8,12 +8,14 @@ const CartSheetDetails = ({
   total,
   cart,
   saveCartToDbHandler,
+  setOpen,
 }: {
   subtotal: number;
   shippingFee: number;
   total: number;
   cart: any;
   saveCartToDbHandler: () => Promise<void>;
+  setOpen: any;
 }) => {
   return (
     <div className="bg-white">
@@ -32,7 +34,10 @@ const CartSheetDetails = ({
       <div className="flex justify-center">
         <Button
           disabled={cart.length == 0}
-          onClick={() => saveCartToDbHandler()}
+          onClick={() => {
+            saveCartToDbHandler();
+            setOpen(false);
+          }}
           className="website-theme-color-bg p-7"
         >
           Continue to Secure Checkout {ICONS.rightArrow}

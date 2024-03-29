@@ -262,5 +262,7 @@ export async function getAllUserOrders(clerkId: string, filter: string) {
         .lean();
     }
     return JSON.parse(JSON.stringify(orders));
-  } catch (error) {}
+  } catch (error) {
+    return [];
+  }
 }
