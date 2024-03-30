@@ -32,7 +32,7 @@ const CarouselComponent = () => {
                   src={`/images/banner/${index + 1}.png`}
                   alt={`image_${index + 1}`}
                   width={1500}
-                  height={100}
+                  height={300}
                 />
               </Link>
             </div>

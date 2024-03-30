@@ -19,6 +19,7 @@ import {
 } from "@/components/lib/actions/user.actions";
 import toast from "react-hot-toast";
 import { LoadingSpinner } from "../../loading-spinner/loading-spinner";
+import { useRouter } from "next/navigation";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -70,6 +71,7 @@ const CheckoutShippingDetails = ({
 }) => {
   const [addresses, setAddresses] = useState<any>(user?.address || []);
   const [visible, setVisible] = useState(false);
+  const router = useRouter();
   useEffect(() => {
     if (user?.address) {
       setAddresses(user.address);
@@ -79,11 +81,13 @@ const CheckoutShippingDetails = ({
     const res = await changeActiveAddress(id, user._id);
     setAddresses(res.addresses);
     toast.success("Active Address Successfully switched.");
+    router.refresh();
   };
   const deleteHandler = async (id: string) => {
     const res = await deleteAddress(id, user._id);
     setAddresses(res.addresses);
     toast.success("Successfully deleted address");
+    router.refresh();
   };
   const {
     register,
@@ -99,6 +103,7 @@ const CheckoutShippingDetails = ({
       const res = await saveAddress(data, user._id);
       setAddresses(res.addresses);
       toast.success("Successfully added new address");
+      router.refresh();
     } catch (error: any) {
       setError("root", { message: error });
     }
