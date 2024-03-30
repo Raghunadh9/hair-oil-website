@@ -26,7 +26,7 @@ const SelectSizes = ({
           <div
             className={`${
               i == querySize && "website-theme-color-bg text-white"
-            } w-[45px] h-[45px] rounded-md grid items-center border border-[#e6e6e6] cursor-pointer justify-center hover:text-white hover:bg-[#7BCAD7]`}
+            } w-[45px] h-[45px] rounded-md grid items-center border border-[#e6e6e6] cursor-pointer justify-center hover:text-white hover:bg-[#308D94]`}
           >
             {sizes.size}
           </div>

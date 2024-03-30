@@ -49,7 +49,6 @@ const SingleProductPage = async ({
     style,
     size
   );
-
   return (
     <div className="min-h-[100vh] m-4">
       <div className="max-w-[1300px] my-0 mx-auto p-[1rem]">

@@ -193,7 +193,7 @@ const CheckoutShippingDetails = ({
             <IoMdArrowDropupCircle className="text-[2rem] fill-[#222]" />
           </span>
         ) : (
-          <span className="flex items-center justify-center gap-[5px] upto425:p-[2px] disabled:blue_col_bg_disabled">
+          <span className="flex items-center justify-center gap-[5px] upto425:p-[2px] disabled:website-theme-color-bg_light">
             ADD NEW ADDRESS
             <AiOutlinePlus />
           </span>

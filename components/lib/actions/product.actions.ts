@@ -6,6 +6,7 @@ import Category from "../database/models/category.model";
 import SubCategory from "../database/models/subCategory.model";
 import { connectToDatabase } from "../database/db";
 import { handleError } from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 function calculatePercentage(num: any, product: any) {
   return (
@@ -113,7 +114,7 @@ export async function getSingleProduct(
 
     return JSON.parse(JSON.stringify(newProduct));
   } catch (error) {
-    handleError(error);
+    redirect("/");
   }
 }
 export async function getProductDetailsById(
@@ -151,70 +152,73 @@ export async function getProductDetailsById(
     console.log(error);
   }
 }
+export async function createProductReview(
+  size: string,
+  style: string,
+  rating: any,
+  review: string,
+  clerkId: string,
+  productId: any
+) {
+  try {
+    await connectToDatabase();
+    const product = await Product.findById(productId);
+    const user = await User.findOne({ clerkId });
 
-// // CREATE
-// export async function createUser(user: CreateUserParams) {
-//   try {
-//     await connectToDatabase();
+    if (product) {
+      const exist = product.reviews.find(
+        (x: any) => x.reviewBy.toString() == user._id
+      );
+      if (exist) {
+        await Product.updateOne(
+          {
+            _id: productId,
+            "reviews._id": exist._id,
+          },
+          {
+            $set: {
+              "reviews.$.review": review,
+              "reviews.$.size": size,
+              "reviews.$.style": style,
+              "reviews.$.rating": rating,
+            },
+          },
+          {
+            new: true,
+          }
+        );
+        const updatedProduct = await Product.findById(productId);
+        updatedProduct.numReviews = updatedProduct.reviews.length;
+        updatedProduct.rating =
+          updatedProduct.reviews.reduce((a: any, r: any) => r.rating + a, 0) /
+          updatedProduct.reviews.length;
+        await updatedProduct.save();
+        await updatedProduct.populate("reviews.reviewBy");
+        return JSON.parse(
+          JSON.stringify({ reviews: updatedProduct.reviews.reverse() })
+        );
+      } else {
+        const full_review = {
+          reviewBy: user._id,
+          rating: rating,
+          review: review,
+          size: size,
+          style: style,
+        };
+        product.reviews.push(full_review);
+        product.numReviews = product.reviews.length;
+        product.rating =
+          product.reviews.reduce((a: any, r: any) => r.rating + a, 0) /
+          product.reviews.length;
+        await product.save();
+        await product.populate("reviews.reviewBy");
 
-//     const newUser = await User.create(user);
-
-//     return JSON.parse(JSON.stringify(newUser));
-//   } catch (error) {
-//     handleError(error);
-//   }
-// }
-
-// // READ
-// export async function getUserById(userId: string) {
-//   try {
-//     await connectToDatabase();
-
-//     const user = await User.findOne({ clerkId: userId });
-
-//     if (!user) throw new Error("User not found");
-
-//     return JSON.parse(JSON.stringify(user));
-//   } catch (error) {
-//     handleError(error);
-//   }
-// }
-
-// // UPDATE
-// export async function updateUser(clerkId: string, user: UpdateUserParams) {
-//   try {
-//     await connectToDatabase();
-
-//     const updatedUser = await User.findOneAndUpdate({ clerkId }, user, {
-//       new: true,
-//     });
-
-//     if (!updatedUser) throw new Error("User update failed");
-
-//     return JSON.parse(JSON.stringify(updatedUser));
-//   } catch (error) {
-//     handleError(error);
-//   }
-// }
-
-// // DELETE
-// export async function deleteUser(clerkId: string) {
-//   try {
-//     await connectToDatabase();
-
-//     // Find user to delete
-//     const userToDelete = await User.findOne({ clerkId });
-
-//     if (!userToDelete) {
-//       throw new Error("User not found");
-//     }
-
-//     // Delete user
-//     const deletedUser = await User.findByIdAndDelete(userToDelete._id);
-//     revalidatePath("/");
-
-//     return deletedUser ? JSON.parse(JSON.stringify(deletedUser)) : null;
-//   } catch (error) {
-//     handleError(error);
-//   }
-// }
+        return JSON.parse(
+          JSON.stringify({ reviews: product.reviews.reverse() })
+        );
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}

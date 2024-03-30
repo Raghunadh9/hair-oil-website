@@ -4,8 +4,7 @@ import { config } from "./config";
 export const NavLinks: TypeofNavLinks[] = [
   { href: "/", key: "Home", text: "Home" },
   { href: "/shop", key: "Shop", text: "Shop" },
-  { href: "/hair-oils", key: "Hair Oils", text: "Hair Oils" },
-  { href: "/collections", key: "Collections", text: "Collections" },
+  { href: "/shop?sortby=popular", key: "Best Seller", text: "Best Seller" },
   { href: "/track-order", key: "Track order", text: "Track order" },
 ];
 export const Testimonials: TypeofTestimonials[] = [
@@ -30,7 +29,6 @@ export const UserLoggedinLinks: TypeofNavLinks[] = [
 export const NavLinksMobile: TypeofNavLinks[] = [
   { href: "/", key: "Home", text: "Home" },
   { href: "/shop", key: "Shop", text: "Shop" },
-  { href: "/hair-oils", key: "Hair Oils", text: "Hair Oils" },
   { href: "/search-suggestions", key: "Search", text: "Search" },
   { href: "/track-order", key: "Track order", text: "Track order" },
   { href: "/favourites", key: "My Favourites", text: "My Favourites" },

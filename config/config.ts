@@ -11,6 +11,6 @@ export const config: ConfigType = {
   websiteUrl: "http://localhost:3000",
   websiteLogo: "",
   websiteDescription: `HERBE: Discover the Essence of Radiance with Our Nourishing Hair Oils.`,
-  websiteThemeColor: "#7BCAD7",
+  websiteThemeColor: "#308D94",
   websiteGreatness: "India's leading hair oil selling platform.",
 };

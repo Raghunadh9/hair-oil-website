@@ -10,6 +10,7 @@ import { BsHandbagFill, BsHeart } from "react-icons/bs";
 import { TbMinus, TbPlus } from "react-icons/tb";
 import { toast as sonnerToast } from "sonner";
 import { ICONS } from "../../icons";
+import { Button } from "@nextui-org/react";
 
 const QtyButtons = ({
   product,
@@ -134,16 +135,15 @@ const QtyButtons = ({
       </div>
       {/* ActionsPage */}
       <div className="from1024px:flex gap-4 flex from1024px:gap-4 upto425:text-[15px] upto640:flex upto640:justify-center upto640:items-center ">
-        <button
+        <Button
           onClick={() => addToCartHandler()}
           className="mt-[1rem] rounded-md text-[17px] website-theme-color-bg text-white z-[50] cursor-pointer w-full font-[600] flex items-center justify-center gap-[10px] h-[60px] upto425:h-[50px] upto425:fixed upto425:bottom-0 upto425:right-[1px] disabled:website-theme-color-bg_disabled"
-          // id={cssStyles.ActionsProductPageButtonAddToCart}
           disabled={product.quantity < 1 || qty === 0 || size === null}
           style={{ cursor: `${product.quantity < 1 ? "not-allowed" : ""}` }}
         >
           <BsHandbagFill className={"w-[30px] h-[30px] translate-y-[-3px]"} />
           <b className="">ADD TO CART</b>
-        </button>
+        </Button>
         <button
           // onClick={() => handleWishList()}
           className="rounded-md bg-black mt-[1rem] text-white flex gap-[5px] items-center p-[10px] from425:p-[25px] upto425:p-[10px] upto425:h-[50px] upto425:w-full upto425:justify-center  h-[60px]"

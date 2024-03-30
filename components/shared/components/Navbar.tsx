@@ -16,11 +16,11 @@ import FullCartSheet from "./cart/cart.full.sheet";
 
 const Navbar = async () => {
   return (
-    <nav className="flexBetween navbar shadow-md sticky top-0 z-[200] bg-white  upto425:z-[10] h-[90px]">
+    <nav className="uppercase flexBetween navbar shadow-md sticky top-0 z-[200] website-theme-color-bg text-white upto425:z-[10] h-[90px]">
       <div className="flex-1 flexStart gap-10 bg-">
         <Logo />
 
-        <ul className="xl:flex hidden text-medium font-semibold gap-7">
+        <ul className="xl:flex hidden text-medium gap-7">
           {NavLinks.map((link) => (
             <Link href={link.href} key={link.text}>
               {link.text}
@@ -45,7 +45,9 @@ const Navbar = async () => {
           <SignedOut>
             {" "}
             <Link href={"/sign-in"}>
-              <Button className={"website-theme-color-bg"}>Sign in</Button>
+              <Button className="border-2 border-white bg-white text-black">
+                Sign in
+              </Button>
             </Link>
           </SignedOut>
           <SignedIn>

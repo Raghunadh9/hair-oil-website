@@ -39,6 +39,7 @@ const config: Config = {
       upto425: { max: "425px" },
       upto640: { max: "640px" },
       upto768: { max: "768px" },
+      upto930: { max: "930px" },
       upto1024px: { max: "1024px" },
       upto1280px: { max: "1280px" },
       upto1440px: { max: "1440px" },

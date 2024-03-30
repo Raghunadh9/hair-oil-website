@@ -20,21 +20,19 @@ const CarouselComponent = () => {
       opts={{
         align: "start",
       }}
-      className="w-full max-w-full pl-1 "
+      className="w-full max-w-full pl-1 mt-[5px]"
     >
       <CarouselContent className="">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index} className="basis-full ">
-            <div className="">
-              <Image
-                src={`/images/banner/${index + 1}.png`}
-                alt={`image_${index + 1}`}
-                width={1500}
-                height={250}
-              />
-            </div>
-          </CarouselItem>
-        ))}
+        <CarouselItem className="basis-full ">
+          <div className="">
+            <Image
+              src={`/images/banner/5.png`}
+              alt={`image_5`}
+              width={1500}
+              height={250}
+            />
+          </div>
+        </CarouselItem>
       </CarouselContent>
       <CarouselPrevious />
       <CarouselNext />

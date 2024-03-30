@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
+import Reviews from "../client/singleProduct/reviews/reviews";
 
 const ProductDetailsTabs = ({
   product,
@@ -10,21 +11,35 @@ const ProductDetailsTabs = ({
 }) => {
   return (
     <div className="border-t-2 border-t-gray-300 ">
-      <h1 className="my-[50px] underline text-center from321:my-[10px]">
+      <h1 className="my-[50px] underline text-center from321:my-[10px] text-2xl font-bold">
         Product Details
       </h1>
       <div className=" upto425:overflow-x-auto">
-        <Tabs defaultValue="Description" className="w-[500px] ">
-          <TabsList className="grid w-full grid-cols-2 ">
-            <TabsTrigger value="Description">Description</TabsTrigger>
-            <TabsTrigger value="moredetails">
-              More Details of the product
+        <Tabs defaultValue="Description" className="w-full ">
+          <TabsList className="grid w-full grid-cols-3 ">
+            <TabsTrigger
+              value="Description"
+              className="py-[20px] border-2 border-gray-500"
+            >
+              Description
+            </TabsTrigger>
+            <TabsTrigger
+              value="moredetails"
+              className="py-[20px] border-2 border-gray-500"
+            >
+              Details
+            </TabsTrigger>
+            <TabsTrigger
+              value="reviews"
+              className="py-[20px] border-2 border-gray-500"
+            >
+              Reviews ({product.reviews.length})
             </TabsTrigger>
           </TabsList>
-          <TabsContent value="Description">
+          <TabsContent value="Description" className="my-[30px]">
             <div className="">{details[0]}</div>
           </TabsContent>
-          <TabsContent value="moredetails">
+          <TabsContent value="moredetails" className="my-[30px]">
             {details.slice(1, details.length).map((info: any, index: any) => (
               <div key={index}>
                 <div className="flex ">
@@ -36,6 +51,9 @@ const ProductDetailsTabs = ({
                 </div>
               </div>
             ))}
+          </TabsContent>
+          <TabsContent value="reviews" className="my-[30px]">
+            <Reviews product={product} />
           </TabsContent>
         </Tabs>
       </div>
