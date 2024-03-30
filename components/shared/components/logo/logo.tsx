@@ -5,7 +5,7 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div className="bg-transparent ">
+    <div className="bg-transparent pl-[50px] upto640:pl-[0px]">
       <Link href={"/"}>
         <Image
           src="/images/logo.png"
@@ -15,7 +15,7 @@ const Logo = () => {
           className="ml-1"
         />
         <h2 className="text-xl text-center">
-          <span className="font-extrabold text-[#FDC153]">
+          <span className="font-extrabold text-white">
             {config.websiteTitle}
           </span>
         </h2>
