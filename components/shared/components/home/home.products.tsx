@@ -11,9 +11,8 @@ const HomeProductPage = ({ product }: { product: TypeofSingleProduct }) => {
     .sort((a, b) => {
       return a - b;
     });
-  const discount = product.subProducts[0].discount;
   return (
-    <div className="w-full p-1 hover:scale-105 hover:shadow-xl sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 transition  ">
+    <div className="w-full hover:scale-105 hover:shadow-xl sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 transition  ">
       <div className="">
         <Link href={`/product/${product.slug}?style=0`}>
           <Image

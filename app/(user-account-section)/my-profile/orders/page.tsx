@@ -6,7 +6,11 @@ import { FiExternalLink } from "react-icons/fi";
 import styles from "./page.module.css";
 import slugify from "slugify";
 import { getAllUserOrders } from "@/components/lib/actions/user.actions";
-
+import { Metadata } from "next";
+import { config } from "@/config/config";
+export const metadata: Metadata = {
+  title: `${config.websiteTitle}: My Orders`,
+};
 const ProfilePageOrders = async ({
   searchParams,
 }: {

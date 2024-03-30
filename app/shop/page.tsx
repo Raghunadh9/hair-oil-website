@@ -1,4 +1,6 @@
 import React from "react";
+import type { Metadata } from "next";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,7 +10,15 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { ICONS } from "@/components/shared/components/icons";
-const page = () => {
+import { getAllProducts } from "@/components/lib/actions/product.actions";
+import ShowHomeProducts from "@/components/shared/components/home/home.show.products";
+import { config } from "@/config/config";
+export const metadata: Metadata = {
+  title: `${config.websiteTitle}: Shop All Products`,
+};
+const ShopPage = async () => {
+  const products: TypefAllProducts = await getAllProducts();
+
   return (
     <div className="my-[50px] px-5">
       <Breadcrumb>
@@ -32,8 +42,9 @@ const page = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
+      <ShowHomeProducts products={products} />
     </div>
   );
 };
 
-export default page;
+export default ShopPage;

@@ -1,14 +1,7 @@
 "use client";
 import { UserProfile } from "@clerk/nextjs";
 import React from "react";
-import {
-  SignOutButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useClerk,
-} from "@clerk/nextjs";
-import { Button } from "@nextui-org/react";
+import { useClerk } from "@clerk/nextjs";
 
 const ManageAccount = () => {
   const { user } = useClerk();

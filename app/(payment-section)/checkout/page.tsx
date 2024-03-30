@@ -4,7 +4,11 @@ import styles from "./page.module.css";
 import CheckoutShippingDetails from "@/components/shared/components/client/checkout/checkout.shipping.details";
 import CheckoutUserProducts from "@/components/shared/components/checkout/checkout.user.products";
 import CheckoutPaymentandSummary from "@/components/shared/components/client/checkout/checkout.payment.and.summary";
-
+import { Metadata } from "next";
+import { config } from "@/config/config";
+export const metadata: Metadata = {
+  title: `${config.websiteTitle}: Secure Checkout`,
+};
 const CheckoutPage = async () => {
   const { userId } = auth();
   if (!userId) return;

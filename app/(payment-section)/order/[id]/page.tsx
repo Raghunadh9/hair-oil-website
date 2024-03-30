@@ -4,7 +4,11 @@ import OrderProductStatusDrawer from "@/components/shared/components/order/order
 import Image from "next/image";
 import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
-
+import { Metadata } from "next";
+import { config } from "@/config/config";
+export const metadata: Metadata = {
+  title: `${config.websiteTitle}: Order`,
+};
 const OrderPage = async ({ params }: { params: { id: string } }) => {
   const slug = params.id;
   const orderData = await getorderDetailsById(slug);

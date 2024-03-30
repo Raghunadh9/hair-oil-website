@@ -16,7 +16,7 @@ export default function HomeFeatures() {
   );
   return (
     <Carousel
-      className="w-full max-w-full my-5 upto640:my-[0px] from640:container_own"
+      className="w-full max-w-full my-5 upto640:my-[0px] from640:container_own upto640:hidden"
       plugins={[plugin.current]}
     >
       <CarouselContent className="-ml-1">

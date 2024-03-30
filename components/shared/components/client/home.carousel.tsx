@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import Link from "next/link";
 
 const CarouselComponent = () => {
   const plugin = React.useRef(
@@ -20,19 +21,23 @@ const CarouselComponent = () => {
       opts={{
         align: "start",
       }}
-      className="w-full max-w-full pl-1 mt-[5px]"
+      className="w-full max-w-full mt-[5px]"
     >
       <CarouselContent className="">
-        <CarouselItem className="basis-full ">
-          <div className="">
-            <Image
-              src={`/images/banner/5.png`}
-              alt={`image_5`}
-              width={1500}
-              height={250}
-            />
-          </div>
-        </CarouselItem>
+        {Array.from({ length: 3 }).map((_, index) => (
+          <CarouselItem key={index} className="basis-full ">
+            <div className="">
+              <Link href={"/shop"}>
+                <Image
+                  src={`/images/banner/${index + 1}.png`}
+                  alt={`image_${index + 1}`}
+                  width={1500}
+                  height={100}
+                />
+              </Link>
+            </div>
+          </CarouselItem>
+        ))}
       </CarouselContent>
       <CarouselPrevious />
       <CarouselNext />

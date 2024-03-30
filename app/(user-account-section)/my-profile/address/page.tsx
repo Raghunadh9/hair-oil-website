@@ -3,7 +3,11 @@ import CheckoutShippingDetails from "@/components/shared/components/client/check
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-
+import { Metadata } from "next";
+import { config } from "@/config/config";
+export const metadata: Metadata = {
+  title: `${config.websiteTitle}: My addresses`,
+};
 const ProfileAddressPage = async () => {
   const { userId } = auth();
   if (!userId) return;

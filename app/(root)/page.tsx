@@ -8,10 +8,11 @@ import { getAllProducts } from "@/components/lib/actions/product.actions";
 // import HomeProductPage from "@/components/shared/components/home/home.products";
 import ShowHomeProducts from "@/components/shared/components/home/home.show.products";
 import ProductShowCase from "@/components/shared/components/home/home.showcase";
+
 const Home = async () => {
   const products: TypefAllProducts = await getAllProducts();
   return (
-    <div className="  mb-5 ">
+    <div className="mb-5 ">
       <CarouselComponent />
       <HomeFeatures />
       <HomeBadges />
