@@ -16,11 +16,11 @@ export default function HomeFeatures() {
   );
   return (
     <Carousel
-      className="w-full max-w-full my-5 upto640:my-[0px] from640:container_own upto640:hidden"
+      className="w-full max-w-full my-5 upto425:my-2 upto640:my-[0px] from640:container_own upto640:hidden"
       plugins={[plugin.current]}
     >
       <CarouselContent className="-ml-1">
-        {Array.from({ length: 2 }).map((_, index) => (
+        {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem
             key={index}
             className="pl-1 md:basis-1/2 lg:basis-1/3 flex justify-center"

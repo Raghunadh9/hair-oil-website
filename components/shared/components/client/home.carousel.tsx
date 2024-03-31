@@ -21,7 +21,7 @@ const CarouselComponent = () => {
       opts={{
         align: "start",
       }}
-      className="w-full max-w-full mt-[5px]"
+      className="w-full max-w-full mt-[5px] upto768:hidden"
     >
       <CarouselContent className="">
         {Array.from({ length: 3 }).map((_, index) => (
