@@ -144,7 +144,7 @@ export async function getProductDetailsById(
       size: product.subProducts[style].sizes[size].size,
       price,
       priceBefore,
-      vendor: product.shop,
+      vendor: product.vendor,
       quantity: product.subProducts[style].sizes[size].qty,
     };
     return JSON.parse(JSON.stringify(data));

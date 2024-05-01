@@ -224,7 +224,6 @@ export async function applyCoupon(coupon: any, user_id: any) {
     if (checkCoupon == null) {
       return { error: "Invalid Coupon" };
     }
-    const id = new mongoose.Types.ObjectId(user_id.trim());
     const { cartTotal } = await Cart.findOne({ user: user_id });
     let totalAfterDiscount =
       cartTotal - (cartTotal * checkCoupon.discount) / 100;
