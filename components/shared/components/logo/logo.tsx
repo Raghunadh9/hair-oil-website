@@ -15,7 +15,7 @@ const Logo = () => {
           className="ml-1"
         />
         <h2 className="text-xl text-center">
-          <span className="font-extrabold text-white">
+          <span className="font-extrabold text-2xl text-[#259347]">
             {config.websiteTitle}
           </span>
         </h2>

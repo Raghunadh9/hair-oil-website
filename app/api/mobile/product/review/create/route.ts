@@ -1,22 +1,17 @@
-import Product from "@/components/lib/database/models/product.model";
 import { connectToDatabase } from "@/components/lib/database/db";
-import { NextRequest, NextResponse } from "next/server";
+import Product from "@/components/lib/database/models/product.model";
 import User from "@/components/lib/database/models/user.model";
+import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
-export const PUT = async (req: NextRequest, res: NextResponse) => {
+export const POST = async (req: Request) => {
   try {
+    const { size, style, rating, review, clerkId, productId } =
+      await req.json();
     await connectToDatabase();
-    // const { id } = params;
-    const fullUrl = `${req.url}`;
-    let url = new URL(fullUrl);
-    const productId = url.pathname.split("/")[3];
-
-    const body = await req.json();
-    const { clerkId, review, size, style, rating } = body;
+    const product = await Product.findById(productId);
     const user = await User.findOne({ clerkId });
 
-    const product = await Product.findById(productId);
     if (product) {
       const exist = product.reviews.find(
         (x: any) => x.reviewBy.toString() == user._id
@@ -46,8 +41,11 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
           updatedProduct.reviews.length;
         await updatedProduct.save();
         await updatedProduct.populate("reviews.reviewBy");
+
         return NextResponse.json(
-          { reviews: updatedProduct.reviews.reverse() },
+          JSON.parse(
+            JSON.stringify({ reviews: updatedProduct.reviews.reverse() })
+          ),
           { status: 200 }
         );
       } else {
@@ -65,13 +63,17 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
           product.reviews.length;
         await product.save();
         await product.populate("reviews.reviewBy");
+
         return NextResponse.json(
-          { reviews: product.reviews.reverse() },
+          JSON.parse(JSON.stringify({ reviews: product.reviews.reverse() })),
           { status: 200 }
         );
       }
     }
   } catch (error: any) {
-    return NextResponse.json({ message: error.message }, { status: 500 });
+    return new NextResponse(`${error.message}`, {
+      status: 500,
+      statusText: error.message,
+    });
   }
 };

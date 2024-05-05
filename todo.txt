@@ -1,1 +1,2 @@
 BUG---> when updating product qty from ind. product page, it should be calculated correctly in cart. 
+
