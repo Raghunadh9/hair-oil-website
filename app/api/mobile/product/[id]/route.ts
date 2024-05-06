@@ -37,7 +37,7 @@ export const POST = async (
     };
     return NextResponse.json(JSON.parse(JSON.stringify(data)), { status: 200 });
   } catch (error: any) {
-    return new NextResponse(`${error}`, {
+    return new NextResponse(`${error.message}`, {
       status: 500,
       statusText: error.message,
     });

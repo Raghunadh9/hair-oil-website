@@ -50,7 +50,7 @@ export const PUT = async (
     });
   } catch (error: any) {
     console.log(error);
-    return new NextResponse(`${error}`, {
+    return new NextResponse(`${error.message}`, {
       status: 500,
       statusText: error.message,
     });
@@ -76,7 +76,7 @@ export const DELETE = async (
       : null;
   } catch (error: any) {
     console.log(error);
-    return new NextResponse(`${error}`, {
+    return new NextResponse(`${error.message}`, {
       status: 500,
       statusText: error.message,
     });

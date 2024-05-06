@@ -19,7 +19,7 @@ export const POST = async (req: Request) => {
     } = body;
     const user = await User.findById(user_id);
     if (!user) {
-      return { error: "User not found" };
+      NextResponse.json("User not found", { status: 500 });
     }
     const newOrder = await new Order({
       user: user._id,
@@ -35,7 +35,7 @@ export const POST = async (req: Request) => {
       { status: 200 }
     );
   } catch (error: any) {
-    return new NextResponse(`${error}`, {
+    return new NextResponse(`${error.message}`, {
       status: 500,
       statusText: error.message,
     });

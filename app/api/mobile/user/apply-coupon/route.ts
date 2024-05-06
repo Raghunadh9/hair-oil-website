@@ -12,10 +12,14 @@ export const PUT = async (req: Request) => {
     const user = await User.findById(user_id);
     const checkCoupon = await Coupon.findOne({ coupon });
     if (!user) {
-      return { error: "User not found" };
+      return new NextResponse(`User not found`, {
+        status: 500,
+      });
     }
     if (checkCoupon == null) {
-      return { error: "Invalid Coupon" };
+      return new NextResponse(`Invalid Coupon`, {
+        status: 500,
+      });
     }
     const { cartTotal } = await Cart.findOne({ user: user_id });
     let totalAfterDiscount =
@@ -30,7 +34,10 @@ export const PUT = async (req: Request) => {
       ),
       { status: 200 }
     );
-  } catch (error) {
-    return NextResponse.json(error, { status: 500 });
+  } catch (error: any) {
+    return new NextResponse(`${error.message}`, {
+      status: 500,
+      statusText: error.message,
+    });
   }
 };

@@ -54,8 +54,11 @@ export const POST = async (req: Request) => {
         status: 200,
       }
     );
-  } catch (error) {
-    return NextResponse.json(error, { status: 500 });
+  } catch (error: any) {
+    return new NextResponse(`${error.message}`, {
+      status: 500,
+      statusText: error.message,
+    });
   }
 };
 export const GET = async (
@@ -76,7 +79,10 @@ export const GET = async (
         status: 200,
       }
     );
-  } catch (error) {
-    return NextResponse.json(error, { status: 500 });
+  } catch (error: any) {
+    return new NextResponse(`${error.message}`, {
+      status: 500,
+      statusText: error.message,
+    });
   }
 };

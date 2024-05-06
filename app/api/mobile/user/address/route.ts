@@ -30,8 +30,11 @@ export const PUT = async (req: Request) => {
     return NextResponse.json(JSON.parse(JSON.stringify({ addresses })), {
       status: 200,
     });
-  } catch (error) {
-    return NextResponse.json(error, { status: 500 });
+  } catch (error: any) {
+    return new NextResponse(`${error.message}`, {
+      status: 500,
+      statusText: error.message,
+    });
   }
 };
 export const DELETE = async (req: Request) => {
@@ -57,8 +60,11 @@ export const DELETE = async (req: Request) => {
         status: 200,
       }
     );
-  } catch (error) {
-    return NextResponse.json(error, { status: 500 });
+  } catch (error: any) {
+    return new NextResponse(`${error.message}`, {
+      status: 500,
+      statusText: error.message,
+    });
   }
 };
 export const POST = async (req: Request) => {
@@ -78,7 +84,10 @@ export const POST = async (req: Request) => {
       JSON.parse(JSON.stringify({ addresses: user.address })),
       { status: 200 }
     );
-  } catch (error) {
-    return NextResponse.json(error, { status: 500 });
+  } catch (error: any) {
+    return new NextResponse(`${error.message}`, {
+      status: 500,
+      statusText: error.message,
+    });
   }
 };

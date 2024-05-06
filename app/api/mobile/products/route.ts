@@ -19,7 +19,10 @@ export const GET = async (req: Request) => {
     return NextResponse.json(JSON.parse(JSON.stringify(products)), {
       status: 200,
     });
-  } catch (error) {
-    return NextResponse.json(error, { status: 500 });
+  } catch (error: any) {
+    return new NextResponse(`${error.message}`, {
+      status: 500,
+      statusText: error.message,
+    });
   }
 };
