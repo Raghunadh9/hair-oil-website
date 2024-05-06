@@ -73,7 +73,9 @@ export const DELETE = async (
       ? new NextResponse(JSON.parse(JSON.stringify(deletedUser)), {
           status: 200,
         })
-      : null;
+      : new NextResponse("", {
+          status: 200,
+        });
   } catch (error: any) {
     console.log(error);
     return new NextResponse(`${error.message}`, {
