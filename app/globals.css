@@ -30,7 +30,7 @@ body {
   @apply bg-[#00983B];
 }
 .website-theme-color-bg_light {
-  @apply bg-[#7bcbd72e];
+  @apply bg-[#00983a2e];
 }
 .website-theme-secondary_color {
   @apply text-black;

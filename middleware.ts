@@ -20,6 +20,7 @@ export default authMiddleware({
     "/track-order",
     "/product/(.*)",
     "/api/mobile/(.*)",
+    "/best-seller",
   ],
 });
 

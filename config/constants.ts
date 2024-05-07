@@ -4,7 +4,7 @@ import { config } from "./config";
 export const NavLinks: TypeofNavLinks[] = [
   { href: "/", key: "Home", text: "Home" },
   { href: "/shop", key: "Shop", text: "Shop" },
-  { href: "/shop?sortby=popular", key: "Best Seller", text: "Best Seller" },
+  { href: "/best-seller", key: "Best Seller", text: "Best Seller" },
   { href: "/track-order", key: "Track order", text: "Track order" },
 ];
 export const Testimonials: TypeofTestimonials[] = [

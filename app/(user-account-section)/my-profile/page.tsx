@@ -10,7 +10,11 @@ const ManageAccount = () => {
     <div>
       <div className="flex justify-center my-[50px]">
         <h1 className="text-2xl capitalize">
-          Hello, <span className="font-bold">{user?.username} 👋</span>!
+          Hello,{" "}
+          <span className="font-bold">
+            {user?.firstName} {user?.lastName} 👋
+          </span>
+          !
         </h1>
       </div>
       <div className="flex justify-center my-[50px]">

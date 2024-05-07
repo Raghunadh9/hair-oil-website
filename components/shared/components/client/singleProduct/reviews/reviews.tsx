@@ -56,7 +56,7 @@ const Reviews = ({ product }: { product: any }) => {
                     style={{ color: "#F6A429" }}
                   />
                   <div
-                    className="h-[20px] bg-[#308D94] rounded-[2px] border-[4px] border-[#308D94]"
+                    className="h-[20px] bg-[#00983B] rounded-[2px] border-[4px] border-[#00983B]"
                     style={{ width: `${rating.percentage}%` }} // Set width based on percentage
                   ></div>{" "}
                   <span className="text-[15px] font-bold flex ">

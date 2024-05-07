@@ -25,7 +25,7 @@ const MobileHamburgerSheetUser = ({ setOpen }: { setOpen: any }) => {
         <span>Welcome Guest!</span>
       </SignedOut>
       <SignedIn>
-        <span className="capitalize ">Hai, {user?.username}!</span>
+        <span className="capitalize ">Hai, {user?.firstName}!</span>
 
         <div className="flex flex-row mb-2 mt-[30px] justify-between font-bold text-[15px]">
           <Popover>

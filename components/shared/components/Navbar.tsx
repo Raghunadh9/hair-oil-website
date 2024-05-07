@@ -13,12 +13,17 @@ import {
 
 import Logo from "./logo/logo";
 import FullCartSheet from "./cart/cart.full.sheet";
+import { CurrentPageProvider } from "./currentPageProvider";
+import { twMerge } from "tailwind-merge";
 
 const Navbar = async () => {
   return (
     <>
-      <div className="w-full website-theme-color-bg text-white flex justify-center items-center">
-        Offer ends soon...
+      <div className="w-full website-theme-color-bg text-white flex justify-center items-center h-[45px] text-sm">
+        ✨Buy One Get One is live✨ | Use code- BOGO
+        <Button className="bg-white rounded-md ml-[10px] py-[1px]">
+          Shop now
+        </Button>
       </div>
       <nav className="uppercase flexBetween navbar shadow-md sticky top-0 z-[200] bg-white text-black upto425:z-[10] h-[90px]">
         <div className="flex-1 flexStart gap-10 bg-">
@@ -26,9 +31,11 @@ const Navbar = async () => {
 
           <ul className="xl:flex hidden text-medium gap-7">
             {NavLinks.map((link) => (
-              <Link href={link.href} key={link.text}>
-                {link.text}
-              </Link>
+              <CurrentPageProvider href={link.href} key={link.text}>
+                <Link href={link.href} className={"hover:underline"}>
+                  {link.text}
+                </Link>
+              </CurrentPageProvider>
             ))}
           </ul>
         </div>
@@ -49,7 +56,10 @@ const Navbar = async () => {
             <SignedOut>
               {" "}
               <Link href={"/sign-in"}>
-                <Button className="border-2 border-white bg-white text-black">
+                <Button
+                  variant="bordered"
+                  className="border-2 border-[#00983B] bg-white text-black"
+                >
                   Sign in
                 </Button>
               </Link>
