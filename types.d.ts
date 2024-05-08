@@ -10,11 +10,9 @@ declare type TypeofFooterLinks = {
 declare type CreateUserParams = {
   clerkId: string;
   email: string;
-  username: string;
   image: string;
 };
 declare type UpdateUserParams = {
-  username: string;
   image: string;
 };
 declare type TypeofNavLinks = {
@@ -83,7 +81,6 @@ declare type TypeofDBUser = {
   _id: any;
   clerkId: string;
   email: string;
-  username: string;
   image: string;
   role: string;
   defaultPaymentMethod: string;

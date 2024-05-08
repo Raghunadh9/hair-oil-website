@@ -48,6 +48,7 @@ const ProductInfo = ({
             </div>{" "}
           </span>
         </div>
+        <ProductBadges />
 
         <div className="text-black flex items-center  upto425:mt-[0rem] border-b-2 border-b-gray-300 ">
           {!size ? (
@@ -117,7 +118,6 @@ const ProductInfo = ({
           Quantity:
         </span>
         <QtyButtons product={product} size={size} style={style} />
-        <ProductBadges />
       </div>
     </div>
   );

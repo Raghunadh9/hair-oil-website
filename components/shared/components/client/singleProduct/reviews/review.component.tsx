@@ -1,13 +1,13 @@
 import { Rating } from "@mui/material";
 
 const Review = ({ review }: { review: any }) => {
-  const { username } = review.reviewBy;
+  const { email } = review.reviewBy;
   return (
     <>
       <div className="review mb-[10px] mt-[20px] font-bold">
         <div className="flex mb-[10px]">
           <div className="relative float-left w-[3.2rem] h-[3.2rem] leading-[3.2rem] mr-[12px] text-center rounded-[50%] text-black font-bold bg-[#e9e9e9]">
-            {username.slice(0, 1).toUpperCase()}
+            {email.slice(0, 1).toUpperCase()}
           </div>
           <Rating
             size={"medium"}
@@ -21,7 +21,7 @@ const Review = ({ review }: { review: any }) => {
           </div>
         </div>
         <span className="uppercase text-[12px] absolute mt-[-35px] ml-[68px]">
-          {username}&nbsp; &nbsp;
+          {email}&nbsp; &nbsp;
           <span className="text-white website-theme-color-bg p-[3px] rounded-md">
             Size: {review.size}
           </span>

@@ -83,7 +83,7 @@ const CartSheetItems = ({
                 </span>
               )}
               {product.discount > 0 && (
-                <span className="text-green-400 bg-[#ffecea] text-[14px] rounded-sm py-[2px] px-[10px] font-[600]  ">
+                <span className="text-green-400 bg- text-[14px] rounded-sm py-[2px] px-[10px] font-[600]  ">
                   -{product.discount}%
                 </span>
               )}
@@ -93,7 +93,7 @@ const CartSheetItems = ({
             <div className="flex items-center gap-[10px]">
               <button
                 onClick={() => updateQty("minus")}
-                className="bg-black w-[30px] text-white height-[50px] rounded-full grid place-items-center cursor-pointer "
+                className="bg-black py-1 w-[30px] text-white height-[50px] rounded-full grid place-items-center cursor-pointer "
                 disabled={product.qty < 2}
               >
                 -
@@ -101,7 +101,7 @@ const CartSheetItems = ({
               <span className="text-[14px] ">{product.qty}</span>
               <button
                 onClick={() => updateQty("plus")}
-                className="bg-black w-[30px] text-white height-[50px] rounded-full grid place-items-center cursor-pointer "
+                className="bg-black py-1 w-[30px] text-white height-[50px] rounded-full grid place-items-center cursor-pointer "
                 disabled={product.qty == product.quantity}
               >
                 +

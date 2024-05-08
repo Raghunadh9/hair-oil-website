@@ -33,10 +33,10 @@ export const PUT = async (
 ) => {
   try {
     await connectToDatabase();
-    const { username, image } = await req.json();
+    const { image } = await req.json();
     const updatedUser = await User.findOneAndUpdate(
       { clerkId: params.id },
-      { username, image },
+      { image },
       {
         new: true,
       }

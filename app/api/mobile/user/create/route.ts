@@ -7,8 +7,8 @@ export const POST = async (req: Request) => {
   try {
     await connectToDatabase();
     const body = await req.json();
-    const { clerkId, email, username, image } = body;
-    const newUser = await User.create({ clerkId, email, username, image });
+    const { clerkId, email, image } = body;
+    const newUser = await User.create({ clerkId, email, image });
 
     return NextResponse.json(JSON.parse(JSON.stringify(newUser)), {
       status: 200,
