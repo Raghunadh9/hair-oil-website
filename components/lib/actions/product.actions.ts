@@ -145,6 +145,8 @@ export async function getProductDetailsById(
       price,
       priceBefore,
       vendor: product.vendor,
+      discount,
+      saved: Math.round(priceBefore - price),
       quantity: product.subProducts[style].sizes[size].qty,
     };
     return JSON.parse(JSON.stringify(data));
@@ -220,5 +222,18 @@ export async function createProductReview(
     }
   } catch (error) {
     console.log(error);
+  }
+}
+export async function getRelatedProductsById(id: any) {
+  try {
+    await connectToDatabase();
+
+    const category = id && id !== "" ? { category: id } : {};
+    let products = await Product.find({ ...category });
+    return {
+      products: JSON.parse(JSON.stringify(products)),
+    };
+  } catch (error) {
+    handleError(error);
   }
 }

@@ -8,15 +8,21 @@ import { useClerk } from "@clerk/nextjs";
 import Router, { useRouter } from "next/navigation";
 import { Slider } from "@/components/ui/slider";
 
-const Reviews = ({ product }: { product: any }) => {
+const Reviews = ({ product, direct }: { product: any; direct: boolean }) => {
   const { user } = useClerk();
   const router = useRouter();
 
   const [reviews, setReviews] = useState(product.reviews);
   return (
     <div className={"mt-[1rem] max-w-full w-full "}>
-      <div className="">
-        <h1 className="upto768:!text-[20px]">
+      <div>
+        <h1
+          className={`${
+            direct
+              ? "font-bold text-2xl mb-[30px] text-center"
+              : "upto768:!text-[20px] "
+          }`}
+        >
           Customer Reviews ({product.reviews.length})
         </h1>
         <div className="mt-[1rem] w-full h-[250px] bg-[#f7f8fa] p-[3rem] flex items-center gap-[10rem] upto930:gap-[3rem] upto930:p-[1rem] upto768:flex-col upto768:h-full ">

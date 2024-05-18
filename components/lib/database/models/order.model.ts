@@ -114,6 +114,9 @@ const orderSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
+    totalSaved: {
+      type: Number,
+    },
     razorpay_order_id: {
       type: String,
     },
@@ -126,6 +129,10 @@ const orderSchema = new mongoose.Schema(
     },
     deliveredAt: {
       type: Date,
+    },
+    isNew: {
+      type: Boolean,
+      default: true,
     },
   },
   {

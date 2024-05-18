@@ -80,7 +80,7 @@ const CartSheetContent = ({ setOpen }: { setOpen: any }) => {
   };
 
   return (
-    <SheetContent className="z-[250]">
+    <SheetContent className="z-[250] overflow-y-auto">
       {loading ? (
         <>
           {" "}
@@ -91,32 +91,30 @@ const CartSheetContent = ({ setOpen }: { setOpen: any }) => {
       ) : (
         <>
           {" "}
-          <SheetHeader>
-            <SheetTitle>
-              <div className="flex gap-[20px] mb-[30px] ">
-                <span>{ICONS.cart}</span>
-                <span>
-                  <CartNumber /> Items
-                </span>
-              </div>
-              <div className="border-b border-b-gray-500"></div>
-            </SheetTitle>
-            <SheetDescription>
-              <div className="upto640:overflow-y-scroll">
-                {cart.map((product: any) => (
-                  // SDeperate compnent here
-                  <CartSheetItems
-                    product={product}
-                    cartItems={cart}
-                    key={product._uid}
-                    saveCartToDbHandler={saveCartToDbHandler}
-                  />
-                ))}
-              </div>
-            </SheetDescription>
-          </SheetHeader>
-          <SheetFooter>
-            <div className="border-t-1 border-gray-400 absolute bottom-4 w-[90%]">
+          <div className="">
+            <SheetHeader>
+              <SheetTitle>
+                <div className="flex gap-[20px] mb-[30px] ">
+                  <span>{ICONS.cart}</span>
+                  <span>
+                    <CartNumber /> Items
+                  </span>
+                </div>
+                <div className="border-b border-b-gray-500"></div>
+              </SheetTitle>
+            </SheetHeader>
+            <div className="">
+              {cart.map((product: any) => (
+                // SDeperate compnent here
+                <CartSheetItems
+                  product={product}
+                  cartItems={cart}
+                  key={product._uid}
+                  saveCartToDbHandler={saveCartToDbHandler}
+                />
+              ))}
+            </div>
+            <div className="">
               <CartSheetDetails
                 subtotal={subTotal}
                 shippingFee={shippingFee}
@@ -126,7 +124,7 @@ const CartSheetContent = ({ setOpen }: { setOpen: any }) => {
                 setOpen={setOpen}
               />
             </div>
-          </SheetFooter>
+          </div>
         </>
       )}
     </SheetContent>

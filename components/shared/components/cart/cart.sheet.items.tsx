@@ -45,7 +45,7 @@ const CartSheetItems = ({
   };
 
   return (
-    <div className="overflow-y-auto">
+    <div className="">
       {" "}
       <div key={product._uid} className="flex gap-[10px] mb-[20px]">
         <Image
@@ -56,11 +56,14 @@ const CartSheetItems = ({
           height={140}
         />
         <div className="">
-          <h1 className="upto425:text-[10px] text-[15px] font-bold ">
+          <h1 className="upto425:text-[12px] text-[15px] font-bold ">
             {product.name}
           </h1>
-          <div className="text-gray-500 text-[12px]">
-            {product.description} <br />
+          <div className="text-gray-500 text-[12px] upto425:text-[10px]">
+            {product.description.length > 14
+              ? product.description.substring(0, 53) + "..."
+              : product.description}{" "}
+            <br />
             {product.size && (
               <span className="font-[600] bg-[#f5f5f5] upto425:text-[10px] ">
                 {product.size}
@@ -74,11 +77,11 @@ const CartSheetItems = ({
           </div>
           <div className="">
             <div className="flex items-center gap-[10px]  ">
-              <span className="text-[17px] font-[600] ">
+              <span className="text-[17px] font-[600] upto425:text-[12px] ">
                 Rs. {(product.price * product.qty).toFixed(2)}
               </span>
               {product.price !== product.priceBefore && (
-                <span className="line-through text-[#cccccc] text-[14px] ">
+                <span className="line-through  text-[14px] upto425:text-[12px] ">
                   Rs. {product.priceBefore}
                 </span>
               )}

@@ -51,15 +51,9 @@ const ProductInfo = ({
         <ProductBadges />
 
         <div className="text-black flex items-center  upto425:mt-[0rem] border-b-2 border-b-gray-300 ">
-          {!size ? (
-            <h1 className="text-black p-0 text-[30px] font-extrabold upto425:text-[20px] ">
-              Rs. {product.price}
-            </h1>
-          ) : (
-            <h1 className="text-black p text-[30px] font-extrabold upto425:text-[20px]">
-              Rs. {product.price}
-            </h1>
-          )}
+          <h1 className="text-black p-0 text-[30px] font-extrabold upto425:text-[20px]">
+            Rs. {product.price}
+          </h1>
           {product.discount > 0 ? (
             <h3 className="font-normal text-[16px] pl-[5px] text-black flex items-center gap-[5px] upto425:text-[14px]">
               <span className="line-through ml-[15px]">
@@ -90,30 +84,10 @@ const ProductInfo = ({
         <div className="upto425:text-[15px] ">
           <h4 className="font-bold">Select a Size : </h4>
           <div className="max600:flex max600:justify-center max600:items-center ">
-            <SelectSizes product={product} style={style} size={size} />
+            <SelectSizes product={product} style={style} />
           </div>
         </div>
-        <div className="max600:flex max600:justify-center max600:items-center flex items-center mt-[1rem] gap-[1rem] upto425:text-[15px]">
-          {product.colors &&
-            product.colors.map((color: any, i: any) => (
-              <span
-                key={i}
-                className={`${
-                  i == style ? "border-[3px] border-black border-double" : ""
-                } grid w-[50px] h-[50px] rounded-full overflow-hidden cursor-pointer hover:border-[3px] hover:border-black hover:border-double `}
-              >
-                <Link href={`/product/${product.slug}?style=${i}`}>
-                  <Image
-                    src={color.image}
-                    alt="iamge"
-                    width={50}
-                    height={50}
-                    className="object-cover "
-                  />
-                </Link>
-              </span>
-            ))}
-        </div>
+
         <span className="font-bold mt-[0rem] upto425:text-[15px]">
           Quantity:
         </span>

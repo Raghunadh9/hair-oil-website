@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Poppins } from "next/font/google";
+import { Montserrat, Poppins, Lato } from "next/font/google";
 import "./globals.css";
 import { config } from "@/config/config";
 import Navbar from "@/components/shared/components/Navbar";
@@ -8,7 +8,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import toast, { Toaster } from "react-hot-toast";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 
-const montserrat = Poppins({ weight: "400", subsets: ["latin"] });
+const montserrat = Lato({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: config.websiteTitle,
@@ -32,7 +32,7 @@ export default function RootLayout({
           <main className="">{children}</main>
           <Footer />
           <Toaster />
-          <SonnerToaster position="top-right" />
+          <SonnerToaster position="bottom-right" />
         </body>
       </html>
     </ClerkProvider>

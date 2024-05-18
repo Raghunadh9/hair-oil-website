@@ -11,10 +11,10 @@ const ProductDetailsTabs = ({
 }) => {
   return (
     <div className="border-t-2 border-t-gray-300 ">
-      <h1 className="my-[50px] underline text-center from321:my-[10px] text-2xl font-bold">
+      <h1 className="my-[50px] text-center from321:my-[10px] text-2xl font-bold">
         Product Details
       </h1>
-      <div className=" upto425:overflow-x-auto">
+      <div className=" upto425:overflow-x-auto bg-white shadow-xl">
         <Tabs defaultValue="Description" className="w-full ">
           <TabsList className="grid w-full grid-cols-3 ">
             <TabsTrigger
@@ -37,7 +37,10 @@ const ProductDetailsTabs = ({
             </TabsTrigger>
           </TabsList>
           <TabsContent value="Description" className="my-[30px]">
-            <div className="">{details[0]}</div>
+            <div className="p-[50px] ">
+              <h1 className="text-xl font-bold">Know Your Product:</h1>
+              <div className="text-[18px]">{details[0]}</div>
+            </div>
           </TabsContent>
           <TabsContent value="moredetails" className="my-[30px]">
             {details.slice(1, details.length).map((info: any, index: any) => (
@@ -53,7 +56,7 @@ const ProductDetailsTabs = ({
             ))}
           </TabsContent>
           <TabsContent value="reviews" className="my-[30px]">
-            <Reviews product={product} />
+            <Reviews product={product} direct={false} />
           </TabsContent>
         </Tabs>
       </div>

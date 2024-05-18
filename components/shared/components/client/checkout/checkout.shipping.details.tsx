@@ -70,7 +70,7 @@ const CheckoutShippingDetails = ({
   profile?: any;
 }) => {
   const [addresses, setAddresses] = useState<any>(user?.address || []);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const router = useRouter();
   useEffect(() => {
     if (user?.address) {

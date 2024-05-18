@@ -12,6 +12,13 @@ declare type CreateUserParams = {
   email: string;
   image: string;
 };
+declare type CreateTopBarParams = {
+  title: string;
+  btnTitle: string;
+  btnLink: string;
+  btnColor?: string;
+  topBarColor?: string;
+};
 declare type UpdateUserParams = {
   image: string;
 };
@@ -75,6 +82,8 @@ interface TypeofSingleProduct {
   }[];
   createdAt: string;
   updatedAt: string;
+  ingredients: any[];
+  benefits: any[];
   __v: number;
 }
 declare type TypeofDBUser = {

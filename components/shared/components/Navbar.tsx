@@ -10,22 +10,29 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
 import Logo from "./logo/logo";
 import FullCartSheet from "./cart/cart.full.sheet";
 import { CurrentPageProvider } from "./currentPageProvider";
-import { twMerge } from "tailwind-merge";
+import { getTopBar } from "@/components/lib/actions/topBar.actions";
+import Search from "./client/search";
 
 const Navbar = async () => {
+  const topBar = await getTopBar();
   return (
     <>
-      <div className="w-full website-theme-color-bg text-white flex justify-center items-center h-[45px] text-sm">
-        ✨Buy One Get One is live✨ | Use code- BOGO
-        <Button className="bg-white rounded-md ml-[10px] py-[1px]">
-          Shop now
-        </Button>
-      </div>
-      <nav className="uppercase flexBetween navbar shadow-md sticky top-0 z-[200] bg-white text-black upto425:z-[10] h-[90px]">
+      {topBar.length === 1 ? (
+        <div className="w-full website-theme-color-bg text-white flex justify-center items-center h-[45px] text-sm">
+          {topBar[0].title}
+          <Link href={topBar[0].btnLink}>
+            <Button className={`bg-[white] rounded-md ml-[10px] py-[1px]`}>
+              {topBar[0].btnTitle}
+            </Button>
+          </Link>
+        </div>
+      ) : (
+        <></>
+      )}
+      <nav className="flexBetween navbar shadow-md sticky top-0 z-[200]  text-black bg-white upto425:z-[10] h-[70px]">
         <div className="flex-1 flexStart gap-10 bg-">
           <Logo />
 
@@ -44,10 +51,6 @@ const Navbar = async () => {
             <Link href={"/search-suggestions"}>
               {" "}
               <div className="cursor-pointer">{ICONS.search}</div>
-            </Link>
-            <Link href={"/favourites"}>
-              {" "}
-              <div className="cursor-pointer">{ICONS.favourite}</div>
             </Link>
           </div>
 

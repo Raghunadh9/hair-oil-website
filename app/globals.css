@@ -17,8 +17,9 @@ body {
 .auth {
   @apply flex-center min-h-screen w-full;
 }
+/* #308D94 */
 .website-theme-color {
-  @apply text-[#00983B];
+  @apply text-[#308D94];
 }
 .p-16-semibold {
   @apply font-semibold text-[16px] leading-[140%];
@@ -30,7 +31,7 @@ body {
   @apply bg-[#00983B];
 }
 .website-theme-color-bg_light {
-  @apply bg-[#00983a2e];
+  @apply bg-[#D1ECDB];
 }
 .website-theme-secondary_color {
   @apply text-black;

@@ -7,7 +7,7 @@ type ConfigType = {
   websiteGreatness: string;
 };
 export const config: ConfigType = {
-  websiteTitle: "HERBE",
+  websiteTitle: "Herbe",
   websiteUrl: "http://localhost:3000",
   websiteLogo: "",
   websiteDescription: `HERBE: Discover the Essence of Radiance with Our Nourishing Hair Oils.`,

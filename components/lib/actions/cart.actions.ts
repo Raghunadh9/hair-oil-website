@@ -31,6 +31,6 @@ export async function updateCart(products: any) {
     const data = await Promise.all(promises);
     return JSON.parse(JSON.stringify(data));
   } catch (error) {
-    handleError(error);
+    console.log(error);
   }
 }

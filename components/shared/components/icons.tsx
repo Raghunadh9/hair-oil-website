@@ -36,13 +36,18 @@ import {
 } from "react-icons/fa";
 import { BsCart, BsHeart, BsSearch, BsShop } from "react-icons/bs";
 import { GiHamburgerMenu, GiTreeBranch } from "react-icons/gi";
-import { TbMapPinSearch } from "react-icons/tb";
+import { TbDiscount, TbMapPinSearch } from "react-icons/tb";
 import { CiBoxList } from "react-icons/ci";
 import { HiMiniMapPin } from "react-icons/hi2";
 import { LuBox } from "react-icons/lu";
+import { HiMiniCheckBadge } from "react-icons/hi2";
+import { BsGraphUpArrow } from "react-icons/bs";
+import { RiSecurePaymentFill } from "react-icons/ri";
 
 export const ICONS = {
   right: <IoMdCheckmark size={25} />,
+  securePayment: <RiSecurePaymentFill size={30} color="#00983B" />,
+
   homeMobile: <TiHomeOutline size={25} />,
   dashboard: <MdOutlineDashboard />,
   write: <GoPencil />,
@@ -66,8 +71,6 @@ export const ICONS = {
   regenerate: <IoIosRepeat />,
   cart: <BsCart size={25} />,
   cartMobile: <BsCart size={20} />,
-  favourite: <BsHeart size={25} />,
-  favouriteMobile: <BsHeart size={20} />,
   search: <BsSearch size={25} />,
   searchMobile: <BsSearch size={20} />,
   hamburger: <GiHamburgerMenu size={25} />,
@@ -90,4 +93,8 @@ export const ICONS = {
   map: <HiMiniMapPin size={25} />,
   downArrow: <FaArrowDown size={15} />,
   orderBoxMobile: <LuBox size={20} />,
+  discount: <TbDiscount size={30} color="#00983B" />,
+  checkBadge: <HiMiniCheckBadge size={100} color="#00983B" />,
+  checkBadgeProduct: <HiMiniCheckBadge size={35} color="#0AA06E" />,
+  trending: <BsGraphUpArrow size={45} />,
 };

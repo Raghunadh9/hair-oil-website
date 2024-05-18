@@ -31,7 +31,6 @@ export const NavLinksMobile: TypeofNavLinks[] = [
   { href: "/shop", key: "Shop", text: "Shop" },
   { href: "/search-suggestions", key: "Search", text: "Search" },
   { href: "/track-order", key: "Track order", text: "Track order" },
-  { href: "/favourites", key: "My Favourites", text: "My Favourites" },
 ];
 export const ProductBadgesDataLeft: TypeofProductBadgesData[] = [
   { title: "Secure Payments", icon: ICONS.securePay },
@@ -60,29 +59,19 @@ export const HomeShowcaseContent: TypeofHomeShowcaseContent[] = [
 ];
 export const footerLinks: TypeofFooterLinks[] = [
   {
-    title: "For developers",
+    title: "Quick Links",
     links: [
-      "Go Pro!",
-      "Explore development work",
-      "Development blog",
-      "Code podcast",
-      "Open-source projects",
-      "Refer a Friend",
-      "Code of conduct",
+      "Privacy Policy",
+      "Refund Policy",
+      "Shipping Policy",
+      "Terms of Service",
     ],
   },
   {
-    title: "Hire developers",
-    links: [
-      "Post a job opening",
-      "Post a freelance project",
-      "Search for developers",
-    ],
+    title: "Useful Links",
+    links: ["Track Order", "FAQ", "Shop", "About Us"],
   },
-  {
-    title: "Brands",
-    links: ["Advertise with us"],
-  },
+
   {
     title: "Company",
     links: [
@@ -98,34 +87,8 @@ export const footerLinks: TypeofFooterLinks[] = [
     ],
   },
   {
-    title: "Directories",
-    links: [
-      "Development jobs",
-      "Developers for hire",
-      "Freelance developers for hire",
-      "Tags",
-      "Places",
-    ],
-  },
-  {
-    title: "Development assets",
-    links: [
-      "Code Marketplace",
-      "GitHub Marketplace",
-      "NPM Registry",
-      "Packagephobia",
-    ],
-  },
-  {
-    title: "Development Resources",
-    links: [
-      "Freelancing",
-      "Development Hiring",
-      "Development Portfolio",
-      "Development Education",
-      "Creative Process",
-      "Development Industry Trends",
-    ],
+    title: "Contact Us",
+    links: ["support@.com", "FAQ", "Shop", "About Us"],
   },
 ];
 type TypeofPaymentMethods = {
@@ -307,4 +270,85 @@ export const ProfilePageordersLinks = [
     name: "Cancelled Orders",
     filter: "Cancelled",
   },
+];
+export const sortingOptions: any = [
+  {
+    name: "Recommend",
+    value: "",
+  },
+  {
+    name: "Most Popular",
+    value: "popular",
+  },
+  {
+    name: "New Arrivals",
+    value: "newest",
+  },
+  {
+    name: "Top Selling",
+    value: "topSelling",
+  },
+  {
+    name: "Top Reviewed",
+    value: "topReviewed",
+  },
+  {
+    name: "Price (low to high)",
+    value: "priceLowToHight",
+  },
+  {
+    name: "Price (high to low)",
+    value: "priceHighToLow",
+  },
+];
+export const ingredientLists: string[] = [
+  "Manjistha",
+  "Tunga Musta",
+  "Kachuralu",
+  "Bavanchalu",
+  "Yellow Vine",
+  "Kath Bel",
+  "Nannari Roots",
+  "Lodha",
+  "Kadukkai",
+  "Kulanjan",
+  "Amla",
+  "Haridra",
+  "Lodhra",
+  "Haritaki",
+  "Dasha Moola",
+  "Indian Lotus Powder",
+  "Licorice",
+  "Karpooram",
+  "Gasa Gasa",
+  "Kasturi Manjal",
+  "Bhringraj",
+  "Kunkudukai",
+  "Shikakai",
+  "Jatamamsi",
+  "White Mustard",
+  "Barley Grains",
+  "Sandalwood",
+  "Red Sandalwood",
+  "Saffron",
+  "Hrivera",
+  "Green Tea Bags",
+  "Henna Powder",
+  "Indigo Powder",
+  "Avaram Sanna Flower",
+  "Vetiver",
+  "Sampangi Vidhai",
+  "Magilam",
+  "Neem Powder",
+  "Rose Petals",
+  "Dry Hibiscus Powder",
+  "Hibiscus Leaf Powder",
+  "Green Gram",
+  "Fenugreek",
+  "Dry Orange Peel",
+  "Dry Curry Leaves",
+  "Maredu",
+  "Black Pepper",
+  "Organic Ginger Root",
+  "Pudeena",
 ];

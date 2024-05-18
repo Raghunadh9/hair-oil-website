@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const NotFound = () => {
@@ -9,13 +10,13 @@ const NotFound = () => {
           <p className="text-gray-600">
             Oops! The page you are looking for could not be found.
           </p>
-          <a
+          <Link
             href="/"
-            className="mt-4 inline-block rounded bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600"
+            className="mt-4 inline-block rounded website-theme-color-bg px-4 py-2 font-semibold text-white "
           >
             {" "}
             Go back to Home{" "}
-          </a>
+          </Link>
         </div>
       </div>
     </div>

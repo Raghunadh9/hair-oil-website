@@ -59,7 +59,8 @@ const productSchema = new mongoose.Schema(
         value: String,
       },
     ],
-
+    benefits: [{ name: String }],
+    ingredients: [{ name: String }],
     reviews: [reviewSchema],
     refundPolicy: {
       type: String,

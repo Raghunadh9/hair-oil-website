@@ -15,7 +15,7 @@ const FullCartSheet = () => {
         {" "}
         <div className="cursor-pointer relative ">
           {ICONS.cart}
-          <span className="border-white border-2 absolute bottom-3 rounded-full w-4 h-4 p-0 right-[-5px] text-white website-theme-color-bg text-[12px] leading-tight text-center">
+          <span className="border-white border-2 absolute bottom-3 rounded-full w-5 h-5 p-0 right-[-5px] text-white website-theme-color-bg text-[12px] leading-tight text-center">
             <CartNumber />
           </span>
         </div>

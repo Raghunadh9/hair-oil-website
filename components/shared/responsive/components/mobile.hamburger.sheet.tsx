@@ -64,9 +64,7 @@ const MobileHamburgerSheet = () => {
                 {link.href === "/search-suggestions" && (
                   <span>{ICONS.searchMobile}</span>
                 )}
-                {link.href === "/favourites" && (
-                  <span>{ICONS.favouriteMobile}</span>
-                )}
+             
                 {link.href === "/collections" && (
                   <span>{ICONS.collectionsMobile}</span>
                 )}

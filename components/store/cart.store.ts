@@ -6,23 +6,8 @@ export const useCartStore = create(
     (set: any) => ({
       cart: {
         cartItems: [],
-        cartItemsCount: 0,
-        cartItemsText: "No Cart Items",
       },
-      cartCount: () => {
-        set((state: any) => ({
-          cart: {
-            cartItemsCount: state.cartItems.length,
-          },
-        }));
-      },
-      cartText: () => {
-        set((state: any) => ({
-          cart: {
-            cartItemsText: state.cartItems.length > 1 ? "Items" : "Item",
-          },
-        }));
-      },
+
       addToCart: (item: any) => {
         set((state: any) => ({
           cart: {

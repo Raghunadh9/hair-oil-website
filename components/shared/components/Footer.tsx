@@ -3,6 +3,7 @@ import { footerLinks } from "@/config/constants";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "./logo/logo";
+import { ICONS } from "./icons";
 
 type ColumnProps = {
   title: string;
@@ -43,32 +44,61 @@ const Footer = () => (
             title={footerLinks[1].title}
             links={footerLinks[1].links}
           />
-          <FooterColumn
-            title={footerLinks[2].title}
-            links={footerLinks[2].links}
-          />
         </div>
-
+        <FooterColumn
+          title={footerLinks[2].title}
+          links={footerLinks[2].links}
+        />
         <FooterColumn
           title={footerLinks[3].title}
           links={footerLinks[3].links}
         />
-
-        <div className="flex-1 flex flex-col gap-4">
-          <FooterColumn
-            title={footerLinks[4].title}
-            links={footerLinks[4].links}
-          />
-          <FooterColumn
-            title={footerLinks[5].title}
-            links={footerLinks[5].links}
-          />
+      </div>
+      <div className="">
+        <h3 className="text-2xl font-extrabold">PAYMENT</h3>
+        <div className="flex gap-[10px] items-center">
+          <div className="">{ICONS.securePayment}</div>
+          <div className="">100% Secure Payment Protection</div>
         </div>
+        <div className={"flex flex-wrap gap-[10px] mt-[1rem]"}>
+          <Image
+            className="object-cover border-2 border-[#ccc]"
+            src="/images/checkout/upi.svg"
+            alt="visa"
+            width={50}
+            height={50}
+          />
+          <Image
+            className="object-cover border-2 border-[#ccc]"
+            src="/images/checkout/visa.svg"
+            alt="visa"
+            width={50}
+            height={50}
+          />
+          <Image
+            className="object-contain bg-white border-2 border-[#ccc]"
+            src="/images/checkout/mastercard.svg"
+            alt="mastercard"
+            width={50}
+            height={50}
+          />
 
-        <FooterColumn
-          title={footerLinks[6].title}
-          links={footerLinks[6].links}
-        />
+          <Image
+            className="object-cover border-2 border-[#ccc]"
+            src="/images/checkout/rupay.svg"
+            alt="visa"
+            width={50}
+            height={50}
+          />
+
+          {/* <Image
+            className="object-cover border-2 border-[#ccc]"
+            src="/images/checkout/razorpay.png"
+            alt="razorpay"
+            width={50}
+            height={50}
+          /> */}
+        </div>
       </div>
     </div>
 

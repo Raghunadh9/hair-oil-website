@@ -9,13 +9,13 @@ const Logo = () => {
       <Link href={"/"}>
         <Image
           src="/images/logo.png"
-          width={50}
+          width={37}
           height={20}
           alt="logo"
-          className="ml-1"
+          className="ml-2"
         />
         <h2 className="text-xl text-center">
-          <span className="font-extrabold text-2xl text-[#259347]">
+          <span className="font-extrabold text-[20px] text-black">
             {config.websiteTitle}
           </span>
         </h2>

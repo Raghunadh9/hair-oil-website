@@ -16,7 +16,6 @@ export default authMiddleware({
     "/shop",
     "/hair-oils",
     "/search-suggestions",
-    "/favourites",
     "/track-order",
     "/product/(.*)",
     "/api/mobile/(.*)",

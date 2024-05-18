@@ -1,6 +1,9 @@
 import React from "react";
 import { Metadata } from "next";
-import { getSingleProduct } from "@/components/lib/actions/product.actions";
+import {
+  getRelatedProductsById,
+  getSingleProduct,
+} from "@/components/lib/actions/product.actions";
 import { config } from "@/config/config";
 import styles from "./page.module.css";
 
@@ -16,6 +19,9 @@ import ProductMainSwiper from "@/components/shared/components/client/singleProdu
 import ProductInfo from "@/components/shared/components/singleProduct/product.infos";
 import { ICONS } from "@/components/shared/components/icons";
 import ProductDetailsTabs from "@/components/shared/components/singleProduct/product.tab.details";
+import ProductIngredientsAndBenefits from "@/components/shared/components/singleProduct/product.Ingredients.benefits";
+import Reviews from "@/components/shared/components/client/singleProduct/reviews/reviews";
+import RelatedProducts from "@/components/shared/components/singleProduct/product.similar.products";
 // generate metadata:
 export async function generateMetadata({
   params,
@@ -49,6 +55,7 @@ const SingleProductPage = async ({
     style,
     size
   );
+  const relatedProducts = await getRelatedProductsById(product.category._id);
   return (
     <div className="min-h-[100vh] m-4">
       <div className="max-w-[1300px] my-0 mx-auto p-[1rem]">
@@ -93,6 +100,19 @@ const SingleProductPage = async ({
             product={product}
             details={[product.description, ...product.details]}
           />
+        </div>
+
+        {product.ingredients && product.benefits ? (
+          <div className="my-[50px] border-t-gray-300 flex justify-center">
+            <ProductIngredientsAndBenefits product={product} />{" "}
+          </div>
+        ) : null}
+
+        <div className="border-t-gray-300 mb-[50px]">
+          <Reviews product={product} direct={true} />
+        </div>
+        <div className="">
+          <RelatedProducts data={relatedProducts} currentProduct={product} />
         </div>
       </div>
     </div>

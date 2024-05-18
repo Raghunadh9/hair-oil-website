@@ -6,6 +6,7 @@ import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Metadata } from "next";
 import { config } from "@/config/config";
+import { ICONS } from "@/components/shared/components/icons";
 export const metadata: Metadata = {
   title: `${config.websiteTitle}: Order`,
 };
@@ -13,8 +14,31 @@ const OrderPage = async ({ params }: { params: { id: string } }) => {
   const slug = params.id;
   const orderData = await getorderDetailsById(slug);
   const orderId = orderData._id;
+
   return (
-    <div>
+    <div className="my-[30px]">
+      <>
+        <div className="w-full flex justify-center">
+          🎉 THANK YOU{" "}
+          <span className="font-bold"> &nbsp;{orderData.user.email}</span>
+        </div>
+        <div className="flex justify-center">Order ID: {orderData._id}</div>
+        <div className="flex justify-center items-center">
+          <div className="flex gap-[12px] items-center">
+            <div className="">{ICONS.checkBadge}</div>
+            <div className="">
+              <div className="text-2xl font-semibold">
+                Your order is confirmed
+              </div>
+              <div className="text-gray-400">
+                Order will be delivered to you in 4-5 days on <br /> following
+                address
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+
       <div className="orderData from640:mx-[3rem] from640:my-[2rem] ">
         <div
           className={`from768:max-w-4xl from768:mx-auto from768:grid from768:grid-cols-10 from768:gap-4`}
@@ -23,10 +47,6 @@ const OrderPage = async ({ params }: { params: { id: string } }) => {
             <div className="flex flex-col gap-[10px] p-[1rem] border-b border-b-[#eee] ">
               <div className=" flex items-center gap-[5px] text-[#666] ">
                 Orders <IoIosArrowForward /> Order <IoIosArrowForward /> ID{" "}
-              </div>
-              <div className="flex">
-                <b>Full Order Id:</b>&nbsp;
-                <p>{orderId}</p>
               </div>
               <div className="flex items-center gap-[10px] ">
                 <b>Payment Status:</b>
@@ -169,10 +189,18 @@ const OrderPage = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           <div className="h-fit shadow-xl from768:col-span-4 py-[1rem] px-0 ">
+            <div className="website-theme-color-bg_light website-theme-color font-bold flex p-[12px] rounded-t-lg items-center gap-[20px] justify-start">
+              <div className="">{ICONS.discount}</div>
+              <div className="">
+                Yay! You have saved{" "}
+                <span className="underline">₹{orderData?.totalSaved}</span> on
+                this order
+              </div>
+            </div>
             <center>
               <div className="py-0 px-[1rem] ">
                 <h1 className="text-black text-2xl font-bold mt-[1rem] border-b border-gray-300 ">
-                  Customer&apos;s Order
+                  Customer&apos;s Information
                 </h1>
                 <div className="pb-[10px] ">
                   <div className="flex gap-[10px] items-center">

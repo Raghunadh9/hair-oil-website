@@ -3,15 +3,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React from "react";
 
-const SelectSizes = ({
-  product,
-  style,
-  size,
-}: {
-  product: any;
-  style: number;
-  size: number;
-}) => {
+const SelectSizes = ({ product, style }: { product: any; style: number }) => {
   const searchParams = useSearchParams();
 
   const querySize =
@@ -26,7 +18,7 @@ const SelectSizes = ({
           <div
             className={`${
               i == querySize && "website-theme-color-bg text-white"
-            } w-[45px] h-[45px] rounded-md grid items-center border border-[#e6e6e6] cursor-pointer justify-center hover:text-white hover:bg-[#00983B]`}
+            } w-full h-[45px] px-[10px] rounded-md grid items-center border border-[#e6e6e6] cursor-pointer justify-center hover:text-white hover:bg-[#00983B]`}
           >
             {sizes.size}
           </div>

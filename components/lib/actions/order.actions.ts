@@ -12,6 +12,7 @@ export async function createOrder({
   totalBeforeDiscount,
   couponApplied,
   user_id,
+  totalSaved,
 }: {
   products: any;
   shippingAddress: any;
@@ -20,6 +21,7 @@ export async function createOrder({
   totalBeforeDiscount: any;
   couponApplied: any;
   user_id: any;
+  totalSaved: number;
 }) {
   try {
     await connectToDatabase();
@@ -36,6 +38,7 @@ export async function createOrder({
       total,
       totalBeforeDiscount,
       couponApplied,
+      totalSaved,
     }).save();
     return { order_id: JSON.parse(JSON.stringify(newOrder._id)) };
   } catch (error) {

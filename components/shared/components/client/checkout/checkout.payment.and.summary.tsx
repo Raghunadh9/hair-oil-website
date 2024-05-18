@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 import { LoadingSpinner } from "../../loading-spinner/loading-spinner";
+import { ICONS } from "../../icons";
+import { useCartStore } from "@/components/store/cart.store";
 const CheckoutPaymentandSummary = ({
   cart,
   user,
@@ -24,7 +26,15 @@ const CheckoutPaymentandSummary = ({
   const [addresses, setAddresses] = useState<any>(user?.address || []);
   const [selectedAddress, setSelectedAddress] = useState("");
   const [coupon, setCoupon] = useState("");
+  const [subTotal, setSubtotal] = useState(0);
+
   const router = useRouter();
+  const cart_ = useCartStore((state: any) => state.cart.cartItems);
+
+  const totalSaved: number = cart_.reduce((acc: any, curr: any) => {
+    // Add the 'saved' property value to the accumulator
+    return acc + curr.saved * curr.qty;
+  }, 0);
 
   const [discount, setDiscount] = useState("");
   const [error, setError] = useState("");
@@ -34,6 +44,9 @@ const CheckoutPaymentandSummary = ({
     if (user?.address) {
       setAddresses(user.address);
     }
+    setSubtotal(
+      cart_.reduce((a: any, c: any) => a + c.price * c.qty, 0).toFixed(2)
+    );
   }, [user?.address]);
   useEffect(() => {
     let check = addresses.find((ad: any) => ad.active == true);
@@ -43,6 +56,7 @@ const CheckoutPaymentandSummary = ({
       setSelectedAddress("");
     }
   }, [addresses]);
+  const carttotal = Number(subTotal) + totalSaved;
 
   const applyCouponHandler = async (e: any) => {
     e.preventDefault();
@@ -56,6 +70,15 @@ const CheckoutPaymentandSummary = ({
       setTotalAfterDiscount(res.totalAfterDiscount);
       setDiscount(res.discount);
       setError("");
+    }
+  };
+  const buttonText = () => {
+    if (paymentMethod === "") {
+      return "Please select the payment method";
+    } else if (paymentMethod === "cash") {
+      return "Continue with COD";
+    } else if (paymentMethod === "razorPay") {
+      return "Continue with RazorPay";
     }
   };
   const placeOrderHandler = async () => {
@@ -81,6 +104,7 @@ const CheckoutPaymentandSummary = ({
           totalBeforeDiscount: cart.cartTotal,
           couponApplied: coupon,
           user_id: user._id,
+          totalSaved,
         });
         if (res?.error) {
           console.log(res.error);
@@ -178,12 +202,39 @@ const CheckoutPaymentandSummary = ({
               )}
             </Button>
             {error && <span className={" text-red-500"}>{error}</span>}
+            {/*  */}
+            <div className="website-theme-color-bg_light website-theme-color font-bold flex p-[12px] rounded-t-lg items-center gap-[20px] justify-start">
+              <div className="">{ICONS.discount}</div>
+              <div className="">
+                Yay! You have saved{" "}
+                <span className="underline">₹{totalSaved}</span> on this order
+              </div>
+            </div>
+            <div className="bg-white">
+              <div className="flex text-[14px] items-center justify-between ">
+                <span>Total MRP</span>
+                <span>Rs. {carttotal}</span>
+              </div>
+
+              <div className="flex text-[14px] items-center justify-between ">
+                <span>Cart Discount</span>
+                <span className="website-theme-color">- ₹ {totalSaved}</span>
+              </div>
+              <div className="flex text-[14px] items-center justify-between ">
+                <span>Shipping Charges</span>
+                <span className="text-[17px]  website-theme-color">Free</span>
+              </div>
+              <div className="flex items-center justify-between font-[700] text-[17px] border-t-2 border-black pt-[1rem] mt-[1rem] ">
+                <span> {coupon === "" ? "Total: " : "Total before :"}</span>
+                <span>Rs. {cart.cartTotal}</span>
+              </div>
+            </div>
 
             <div className="mt-[10px] flex flex-col gap-[5px] ">
-              <span className="bg-[#eeeeee75] p-[5px] text-[14px] border border-[#cccccc17]  ">
+              {/* <span className="bg-[#eeeeee75] p-[5px] text-[14px] border border-[#cccccc17]  ">
                 {coupon === "" ? "Total: " : "Total before :"}
                 <b>Rs. {cart.cartTotal}</b>
-              </span>
+              </span> */}
               {Number(discount) > 0 && (
                 <span className="discount bg-green-500 text-white p-[5px] text-[14px] border border-[#cccccc17]  ">
                   Coupon applied : <b className="text-[15px] ">- {discount}%</b>
@@ -217,7 +268,7 @@ const CheckoutPaymentandSummary = ({
               <LoadingSpinner /> Loading...
             </div>
           ) : (
-            "Continue with Secure payment"
+            buttonText()
           )}
         </Button>
       </div>
