@@ -42,7 +42,7 @@ const ShopPage = async () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <ShowHomeProducts products={products} />
+      <ShowHomeProducts products={products} isSimilar={false} />
     </div>
   );
 };
