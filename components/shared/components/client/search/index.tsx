@@ -61,7 +61,7 @@ const Search = () => {
             {searchTerm.length > 0 ? (
               <div>
                 {searchData?.length} Matching Results for{" "}
-                <span className="font-bold">"{searchTerm}"</span>
+                <span className="font-bold">&quot;{searchTerm}&quot;</span>
               </div>
             ) : (
               <div></div>
@@ -76,7 +76,11 @@ const Search = () => {
                 {searchData &&
                   searchData.map((i, index) => {
                     return (
-                      <Link href={`/product/${i.slug}?style=0`} className="">
+                      <Link
+                        href={`/product/${i.slug}?style=0`}
+                        key={index}
+                        className=""
+                      >
                         <div className="w-full flex items-start py-3 border-b-2 border-b-gray-300 ">
                           <Image
                             src={i.subProducts[0].images[0].url}
