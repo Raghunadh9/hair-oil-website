@@ -91,7 +91,7 @@ const SearchPage = () => {
                           </p>
                           <div className="text-black flex items-center  upto425:mt-[0rem] ">
                             <h1 className="text-black p-0 text-[20px] font-extrabold upto425:text-[20px]">
-                              Rs. {i.subProducts[0].discount}
+                              Rs. {i.subProducts[0].sizes[0].price}
                             </h1>
                             {i.subProducts[0].discount > 0 ? (
                               <h3 className="font-normal text-[16px] pl-[5px] text-black flex items-center gap-[5px] upto425:text-[14px]">

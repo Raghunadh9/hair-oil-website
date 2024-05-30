@@ -17,7 +17,7 @@ const ProductIngredientsAndBenefits = ({ product }: { product: any }) => {
 
   return (
     <div className=" w-[80%]">
-      <div className="flex justify-between">
+      <div className="from1024px:flex from1024px:justify-between">
         <div className="">
           <h1 className="font-bold text-2xl text-start mb-[30px]">
             INGREDIENTS

@@ -10,12 +10,16 @@ const ShowHomeProducts = ({
 }) => {
   return (
     <div className="my-[50px] ">
-      <h1 className="text-center font-bold text-2xl  mb-5">
+      <h1 className="text-center font-bold text-2xl website-theme-color mb-5">
         {isSimilar ? "Similar Products" : "All Products"}
       </h1>
       <div className="flex flex-wrap gap-[10px] justify-center ">
         {products.map((product: any, index: any) => (
-          <HomeProductPage product={product} key={index} />
+          <HomeProductPage
+            product={product}
+            key={index}
+            isSimilar={isSimilar}
+          />
         ))}
       </div>
     </div>

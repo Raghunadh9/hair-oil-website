@@ -65,12 +65,14 @@ type FormField = z.infer<typeof schema>;
 const CheckoutShippingDetails = ({
   user,
   profile,
+  modal,
 }: {
   user: TypeofDBUser;
   profile?: any;
+  modal?: boolean;
 }) => {
   const [addresses, setAddresses] = useState<any>(user?.address || []);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(modal ? false : true);
   const router = useRouter();
   useEffect(() => {
     if (user?.address) {
@@ -104,13 +106,14 @@ const CheckoutShippingDetails = ({
       setAddresses(res.addresses);
       toast.success("Successfully added new address");
       router.refresh();
+      setVisible(false);
     } catch (error: any) {
       setError("root", { message: error });
     }
   };
   return (
     <div className="flex flex-col items-center gap-[1rem] upto640:text-[11px]">
-      {!profile && (
+      {!profile && !modal && (
         <div className="w-full pb-[5px] border-b border-b-[#e5e5e5]  ">
           <h2 className="text-black text-2xl font-bold">Your Addresses</h2>
         </div>

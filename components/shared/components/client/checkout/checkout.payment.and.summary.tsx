@@ -7,11 +7,20 @@ import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
+import toast from "react-hot-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { LoadingSpinner } from "../../loading-spinner/loading-spinner";
 import { ICONS } from "../../icons";
 import { useCartStore } from "@/components/store/cart.store";
+import CheckoutShippingDetails from "./checkout.shipping.details";
 const CheckoutPaymentandSummary = ({
   cart,
   user,
@@ -27,6 +36,7 @@ const CheckoutPaymentandSummary = ({
   const [selectedAddress, setSelectedAddress] = useState("");
   const [coupon, setCoupon] = useState("");
   const [subTotal, setSubtotal] = useState(0);
+  const { emptyCart } = useCartStore();
 
   const router = useRouter();
   const cart_ = useCartStore((state: any) => state.cart.cartItems);
@@ -40,6 +50,10 @@ const CheckoutPaymentandSummary = ({
   const [error, setError] = useState("");
   const [placeOrderLoading, setPlaceOrderLoading] = useState<boolean>(false);
   const [couponLoading, setCouponLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    useCartStore.persist.rehydrate();
+  }, []);
   useEffect(() => {
     if (user?.address) {
       setAddresses(user.address);
@@ -109,6 +123,7 @@ const CheckoutPaymentandSummary = ({
         if (res?.error) {
           console.log(res.error);
         } else {
+          emptyCart();
           router.push(`/order/${res?.order_id}`);
         }
       } catch (error) {
@@ -250,27 +265,70 @@ const CheckoutPaymentandSummary = ({
             </div>
           </form>
         </div>
-        <Button
-          className={`mt-[1rem] upto425:fixed upto425:bottom-0 w-full h-[45px] website-theme-color-bg text-white font-[600] rounded-md ${
-            paymentMethod == ""
-              ? "website-theme-color-bg_light cursor-not-allowed"
-              : ""
-          }`}
-          onClick={() => placeOrderHandler()}
-          disabled={
-            paymentMethod == ""
-              ? true
-              : false && placeOrderLoading && addresses.length == 0
-          }
-        >
-          {placeOrderLoading ? (
-            <div className="flex gap-[10px]">
-              <LoadingSpinner /> Loading...
-            </div>
-          ) : (
-            buttonText()
-          )}
-        </Button>
+        {/*TODO: */}
+        {!selectedAddress ? (
+          <>
+            <Dialog>
+              <DialogTrigger
+                className={`mt-[1rem] upto425:fixed upto425:bottom-0 w-full h-[45px] website-theme-color-bg text-white font-[600] rounded-md ${
+                  paymentMethod == ""
+                    ? "website-theme-color-bg_light cursor-not-allowed"
+                    : ""
+                }`}
+                disabled={
+                  paymentMethod == ""
+                    ? true
+                    : false && placeOrderLoading && addresses.length == 0
+                }
+              >
+                {placeOrderLoading ? (
+                  <div className="flex gap-[10px]">
+                    <LoadingSpinner /> Loading...
+                  </div>
+                ) : (
+                  buttonText()
+                )}
+              </DialogTrigger>
+              <DialogContent className="">
+                <DialogHeader className="font-bold text-xl">
+                  Please Select a Shipping Address
+                </DialogHeader>
+                <DialogDescription>
+                  {user?.address
+                    ? "Please Click on one of your addresses to select"
+                    : ""}
+                  <div className="overflow-y-auto h-[300px]">
+                    <CheckoutShippingDetails user={user} modal={true} />
+                  </div>
+                </DialogDescription>
+              </DialogContent>
+            </Dialog>
+          </>
+        ) : (
+          <>
+            <Button
+              className={`mt-[1rem] upto425:fixed upto425:bottom-0 w-full h-[45px] website-theme-color-bg text-white font-[600] rounded-md ${
+                paymentMethod == ""
+                  ? "website-theme-color-bg_light cursor-not-allowed"
+                  : ""
+              }`}
+              onClick={() => placeOrderHandler()}
+              disabled={
+                paymentMethod == ""
+                  ? true
+                  : false && placeOrderLoading && addresses.length == 0
+              }
+            >
+              {placeOrderLoading ? (
+                <div className="flex gap-[10px]">
+                  <LoadingSpinner /> Loading...
+                </div>
+              ) : (
+                buttonText()
+              )}
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );

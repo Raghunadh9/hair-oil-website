@@ -12,7 +12,7 @@ type ColumnProps = {
 
 const FooterColumn = ({ title, links }: ColumnProps) => (
   <div className="footer_column">
-    <h4 className="font-semibold">{title}</h4>
+    <h4 className="font-semibold text-white">{title}</h4>
     <ul className="flex flex-col gap-2 font-normal">
       {links.map((link) => (
         <Link href="/" key={link}>
@@ -24,7 +24,7 @@ const FooterColumn = ({ title, links }: ColumnProps) => (
 );
 
 const Footer = () => (
-  <section className="flexStart footer border-t-1 border-gray-200 bg-[#F0F0F0]">
+  <section className="flexStart footer border-t-1 border-gray-200 bg-[#01BC8F] text-white">
     <div className="flex flex-col gap-12 w-full">
       <div className="flex items-start flex-col">
         <Logo />

@@ -19,7 +19,8 @@ body {
 }
 /* #308D94 */
 .website-theme-color {
-  @apply text-[#308D94];
+  /* @apply text-[#01BC8F]; */
+  @apply text-[#01BC8F];
 }
 .p-16-semibold {
   @apply font-semibold text-[16px] leading-[140%];
@@ -28,7 +29,8 @@ body {
   @apply rounded-[16px] border-1 border-black/50 shadow-sm shadow-purple-200/15 text-black disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important;
 }
 .website-theme-color-bg {
-  @apply bg-[#00983B];
+  /* @apply bg-[#00983B]; */
+  @apply bg-[#01BC8F];
 }
 .website-theme-color-bg_light {
   @apply bg-[#D1ECDB];

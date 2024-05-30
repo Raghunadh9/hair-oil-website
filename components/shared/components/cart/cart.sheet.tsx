@@ -18,6 +18,7 @@ import CartSheetItems from "./cart.sheet.items";
 import CartSheetDetails from "./cart.sheet.cart.details";
 import { useAuth } from "@clerk/nextjs";
 import { LoadingSpinner } from "../loading-spinner/loading-spinner";
+import Link from "next/link";
 
 const CartSheetContent = ({ setOpen }: { setOpen: any }) => {
   const router = useRouter();
@@ -96,33 +97,44 @@ const CartSheetContent = ({ setOpen }: { setOpen: any }) => {
               <SheetTitle>
                 <div className="flex gap-[20px] mb-[30px] ">
                   <span>{ICONS.cart}</span>
-                  <span>
-                    <CartNumber /> Items
+                  <span className="">
+                    {cart.length === 0 ? "Cart" : `${cart.length} Items`}
                   </span>
                 </div>
                 <div className="border-b border-b-gray-500"></div>
               </SheetTitle>
             </SheetHeader>
             <div className="">
-              {cart.map((product: any) => (
-                // SDeperate compnent here
-                <CartSheetItems
-                  product={product}
-                  cartItems={cart}
-                  key={product._uid}
-                  saveCartToDbHandler={saveCartToDbHandler}
-                />
-              ))}
+              {cart.length === 0 ? (
+                <div className="">
+                  <h1 className="text-2xl text-center flex items-center justify-center h-screen font-bold text-gray-400">
+                    {" "}
+                    Your Cart is empty
+                  </h1>
+                </div>
+              ) : (
+                cart.map((product: any) => (
+                  // SDeperate compnent here
+                  <CartSheetItems
+                    product={product}
+                    cartItems={cart}
+                    key={product._uid}
+                    saveCartToDbHandler={saveCartToDbHandler}
+                  />
+                ))
+              )}
             </div>
             <div className="">
-              <CartSheetDetails
-                subtotal={subTotal}
-                shippingFee={shippingFee}
-                total={total}
-                cart={cart}
-                saveCartToDbHandler={saveCartToDbHandler}
-                setOpen={setOpen}
-              />
+              {cart.length > 0 && (
+                <CartSheetDetails
+                  subtotal={subTotal}
+                  shippingFee={shippingFee}
+                  total={total}
+                  cart={cart}
+                  saveCartToDbHandler={saveCartToDbHandler}
+                  setOpen={setOpen}
+                />
+              )}
             </div>
           </div>
         </>
