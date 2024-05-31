@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 export const GET = async (req: Request) => {
   try {
     await connectToDatabase();
+
     const categories = await Category.find({}).sort({ updatedAt: -1 }).lean();
     return NextResponse.json(JSON.parse(JSON.stringify(categories)), {
       status: 200,
