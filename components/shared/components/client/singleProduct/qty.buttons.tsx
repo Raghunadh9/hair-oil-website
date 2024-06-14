@@ -31,8 +31,6 @@ const QtyButtons = ({
   style: number;
 }) => {
   const [qty, setQty] = useState(1);
-  const [openDialog, setOpenDialog] = useState(false);
-
   useEffect(() => {
     size = "";
     setQty(1);

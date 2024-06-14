@@ -19,6 +19,7 @@ import CartSheetDetails from "./cart.sheet.cart.details";
 import { useAuth } from "@clerk/nextjs";
 import { LoadingSpinner } from "../loading-spinner/loading-spinner";
 import Link from "next/link";
+import Image from "next/image";
 
 const CartSheetContent = ({ setOpen }: { setOpen: any }) => {
   const router = useRouter();
@@ -106,11 +107,25 @@ const CartSheetContent = ({ setOpen }: { setOpen: any }) => {
             </SheetHeader>
             <div className="">
               {cart.length === 0 ? (
-                <div className="">
-                  <h1 className="text-2xl text-center flex items-center justify-center h-screen font-bold text-gray-400">
-                    {" "}
-                    Your Cart is empty
-                  </h1>
+                <div className="flex justify-center h-[80vh] items-center">
+                  <div className="">
+                    <Image
+                      src={"/images/illustrations/empty-cart.png"}
+                      alt="_"
+                      width={200}
+                      height={200}
+                    />
+                    <h1 className="text-2xl text-center flex items-center justify-center  font-bold text-gray-400">
+                      {" "}
+                      Your Cart is empty
+                    </h1>
+                    <Link href={"/shop"}>
+                      {" "}
+                      <button className="website-theme-color-bg p-[10px] w-full text-white rounded-md">
+                        Shop Now!
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               ) : (
                 cart.map((product: any) => (

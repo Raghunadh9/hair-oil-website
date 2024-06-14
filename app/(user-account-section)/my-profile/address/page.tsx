@@ -37,8 +37,16 @@ const ProfileAddressPage = async () => {
         <div>
           <div className="mx-[100px] upto425:mx-0 my-[50px]">
             <h1 className="w-full text-center mb-[1rem] font-bold text-2xl">
-              My Addresses
+              MY ADDRESSES
             </h1>
+            <div className="flex justify-center">
+              <Image
+                src={"/images/illustrations/delivery-address.png"}
+                width={400}
+                height={400}
+                alt="_"
+              />
+            </div>
             <CheckoutShippingDetails user={user} profile />
           </div>
         </div>

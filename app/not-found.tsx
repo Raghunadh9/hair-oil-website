@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const NotFound = () => {
   return (
-    <div>
-      <div className="min-h-screen flex flex-grow items-center justify-center bg-gray-50">
+    <div className="flex justify-center my-[50px]">
+      {/* <div className="min-h-screen flex flex-grow items-center justify-center bg-gray-50">
         <div className="rounded-lg bg-white p-8 text-center shadow-xl">
           <h1 className="mb-4 text-4xl font-bold">404</h1>
           <p className="text-gray-600">
@@ -18,7 +19,13 @@ const NotFound = () => {
             Go back to Home{" "}
           </Link>
         </div>
-      </div>
+      </div> */}
+      <Image
+        src={"/images/illustrations/404.png"}
+        alt="_"
+        height={600}
+        width={800}
+      />
     </div>
   );
 };

@@ -32,17 +32,17 @@ const OrderTracking = () => {
   return (
     <div className="">
       <div className="flex justify-center pt-[50px] ">
-        <div className="text-2xl font-bold underline">Order Tracking</div>
+        <div className="text-2xl font-bold">TRACK ORDER</div>
       </div>
       <div className="flex justify-center">
         <Image
-          src={"/images/order/tracking.png"}
-          width={100}
-          height={100}
+          src={"/images/illustrations/track-order.png"}
+          width={400}
+          height={400}
           alt="_"
         />
       </div>
-      <div className="website-theme-color-bg_light py-[30px]  mb-[50px]">
+      <div className="py-[30px]  mb-[50px]">
         <p className="text-center mb-[20px]">Track by Order ID:</p>
         <div className="flex justify-center flex-col">
           <div className="mt-[10px] flex justify-center">

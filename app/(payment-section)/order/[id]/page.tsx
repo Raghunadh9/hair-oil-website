@@ -16,27 +16,22 @@ const OrderPage = async ({ params }: { params: { id: string } }) => {
   const orderId = orderData._id;
 
   return (
-    <div className="my-[30px]">
+    <div className="mb-[30px]">
       <>
+        <div className="flex justify-center ">
+          <Image
+            src={"/images/illustrations/thank-you-for-order.png"}
+            alt="_"
+            height={400}
+            width={400}
+          />
+        </div>
         <div className="w-full flex justify-center">
           🎉 THANK YOU{" "}
           <span className="font-bold"> &nbsp;{orderData.user.email}</span>
         </div>
         <div className="flex justify-center">Order ID: {orderData._id}</div>
-        <div className="flex justify-center items-center">
-          <div className="flex gap-[12px] items-center">
-            <div className="">{ICONS.checkBadge}</div>
-            <div className="">
-              <div className="text-2xl font-semibold">
-                Your order is confirmed
-              </div>
-              <div className="text-gray-400">
-                Order will be delivered to you in 4-5 days on <br /> following
-                address
-              </div>
-            </div>
-          </div>
-        </div>
+        {/*  */}
       </>
 
       <div className="orderData from640:mx-[3rem] from640:my-[2rem] ">

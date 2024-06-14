@@ -132,6 +132,19 @@ const ProfilePageOrders = async ({
                 ))}
               </tbody>
             </table>
+            {orders.length === 0 && (
+              <div className="flex justify-center">
+                <div className="">
+                  <Image
+                    src={"/images/illustrations/no-orders-found.png"}
+                    alt="_"
+                    height={400}
+                    width={400}
+                  />
+                  <h1 className="font-bold text-center">No Orders Found!!!</h1>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

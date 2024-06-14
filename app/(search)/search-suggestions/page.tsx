@@ -46,13 +46,27 @@ const SearchPage = () => {
         <div className="my-[30px]">
           {searchTerm.length > 0 ? (
             <div>
-              {searchData?.length} Matching Results for{" "}
+              {searchData?.length === 0
+                ? "No results found for"
+                : "Matching Results for"}{" "}
               <span className="font-bold">&quot;{searchTerm}&quot;</span>
             </div>
           ) : (
-            <div></div>
+            <div className=""></div>
           )}
         </div>
+        {searchData?.length === 0 && (
+          <div className="flex justify-center ">
+            <div className="">
+              <Image
+                src={"/images/illustrations/no-results.png"}
+                width={400}
+                height={400}
+                alt="_"
+              />
+            </div>
+          </div>
+        )}
         {searchTerm.length > 0 ? (
           <div className="my-[10px]">
             <h1 className="font-bold">PRODUCTS</h1>
