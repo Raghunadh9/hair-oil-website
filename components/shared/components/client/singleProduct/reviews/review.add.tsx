@@ -16,8 +16,6 @@ const AddReview = ({
   setReviews: any;
   user: any;
 }) => {
-  const [size, setSize] = useState("");
-  const [style, setStyle] = useState("");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState<any>(0);
   const [loading, setLoading] = useState(false);
@@ -25,18 +23,7 @@ const AddReview = ({
   const handleSubmit = async () => {
     setLoading(true);
     let msgs = [];
-    if (!size) {
-      msgs.push({
-        msg: "Please select a size !",
-        type: "error",
-      });
-    }
-    if (!style) {
-      msgs.push({
-        msg: "Please select a style !",
-        type: "error",
-      });
-    }
+
     if (!rating) {
       msgs.push({
         msg: "Please add a rating !",
@@ -60,18 +47,10 @@ const AddReview = ({
       toast.error(errorMessage);
     } else {
       try {
-        await createProductReview(
-          size,
-          style,
-          rating,
-          review,
-          user.id,
-          product._id
-        )
+        await createProductReview(rating, review, user.id, product._id)
           .then((res) => {
             setReviews(res.reviews);
-            setSize("");
-            setStyle("");
+
             setRating(0);
             setReview("");
             toast.success("Successfully added product review");
@@ -90,21 +69,6 @@ const AddReview = ({
   return (
     <div className="mt-[1rem] p-[1rem] bg-[#f7f8f8] flex flex-col gap-[1rem] rounded-md  ">
       <div className="w-full flex flex-col gap-[1rem]">
-        <div className="flex" style={{ gap: "10px" }}>
-          <Select
-            property={size}
-            text={"Size"}
-            data={product.allSizes.filter((x: any) => x.size !== size)}
-            handleChange={setSize}
-          />
-
-          <Select
-            property={style}
-            text={"Style"}
-            data={product.colors.filter((x: any) => x !== style)}
-            handleChange={setStyle}
-          />
-        </div>
         <textarea
           className="border-none outline-none resize-none min-h-[150px] p-[1rem]"
           name="review"

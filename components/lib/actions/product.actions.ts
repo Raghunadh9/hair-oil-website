@@ -155,8 +155,6 @@ export async function getProductDetailsById(
   }
 }
 export async function createProductReview(
-  size: string,
-  style: string,
   rating: any,
   review: string,
   clerkId: string,
@@ -180,8 +178,6 @@ export async function createProductReview(
           {
             $set: {
               "reviews.$.review": review,
-              "reviews.$.size": size,
-              "reviews.$.style": style,
               "reviews.$.rating": rating,
             },
           },
@@ -204,8 +200,6 @@ export async function createProductReview(
           reviewBy: user._id,
           rating: rating,
           review: review,
-          size: size,
-          style: style,
         };
         product.reviews.push(full_review);
         product.numReviews = product.reviews.length;

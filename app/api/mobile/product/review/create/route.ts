@@ -6,8 +6,7 @@ export const dynamic = "force-dynamic";
 
 export const POST = async (req: Request) => {
   try {
-    const { size, style, rating, review, clerkId, productId } =
-      await req.json();
+    const { rating, review, clerkId, productId } = await req.json();
     await connectToDatabase();
     const product = await Product.findById(productId);
     const user = await User.findOne({ clerkId });
@@ -25,8 +24,6 @@ export const POST = async (req: Request) => {
           {
             $set: {
               "reviews.$.review": review,
-              "reviews.$.size": size,
-              "reviews.$.style": style,
               "reviews.$.rating": rating,
             },
           },
@@ -53,8 +50,6 @@ export const POST = async (req: Request) => {
           reviewBy: user._id,
           rating: rating,
           review: review,
-          size: size,
-          style: style,
         };
         product.reviews.push(full_review);
         product.numReviews = product.reviews.length;
