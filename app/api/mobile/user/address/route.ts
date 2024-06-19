@@ -54,24 +54,17 @@ export const DELETE = async (req: Request) => {
         statusText: "User not found",
       });
     }
-    // Update the user's addresses by pulling the address with the specified _id
-    const updatedUser = await User.findOneAndUpdate(
-      { clerkId: user_id },
-      { $pull: { address: { _id: id } } },
-      { new: true }
+    // Filter out the address with the specified _id
+    user.addresses = user.addresses.filter(
+      (address: any) => address._id.toString() !== id
     );
 
-    // Check if the update was successful
-    if (!updatedUser) {
-      return new NextResponse("Address not found or failed to update", {
-        status: 400,
-        statusText: "Address not found or failed to update",
-      });
-    }
+    // Save the updated user document
+    await user.save();
 
     // Return the updated addresses
     return NextResponse.json(
-      { addresses: updatedUser.address },
+      { addresses: user.addresses },
       {
         status: 200,
       }
