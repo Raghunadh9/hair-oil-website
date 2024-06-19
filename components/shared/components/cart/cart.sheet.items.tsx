@@ -18,11 +18,7 @@ const CartSheetItems = ({
   }, []);
   const { addToCart, updateCart, emptyCart } = useCartStore();
   const cart = useCartStore((state: any) => state.cart.cartItems);
-  const [active, setActive] = useState();
-  useEffect(() => {
-    const check = cartItems.find((p: any) => p._uid == product._uid);
-    setActive(check);
-  }, [cartItems]);
+
   const updateQty = (type: string) => {
     let newCart = cart.map((p: any) => {
       if (p._uid == product._uid) {
