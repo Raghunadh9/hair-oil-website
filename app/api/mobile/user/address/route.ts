@@ -39,9 +39,23 @@ export const PUT = async (req: Request) => {
 };
 export const DELETE = async (req: Request) => {
   try {
+    // Connect to the database
     await connectToDatabase();
+
+    // Parse the request body
     const { id, user_id } = await req.json();
+
+    // Find the user by their clerkId
     const user = await User.findOne({ clerkId: user_id });
+
+    if (!user) {
+      return new NextResponse("User not found", {
+        status: 404,
+        statusText: "User not found",
+      });
+    }
+
+    // Update the user's addresses by pulling the address with the specified _id
     await user.updateOne(
       {
         $pull: {
@@ -50,17 +64,19 @@ export const DELETE = async (req: Request) => {
       },
       { new: true }
     );
+
+    // Remove the address from the user object (for the response)
+    user.address = user.address.filter((a: any) => a._id != id);
+
+    // Return the updated addresses
     return NextResponse.json(
-      JSON.parse(
-        JSON.stringify({
-          addresses: user.address.filter((a: any) => a._id != id),
-        })
-      ),
+      { addresses: user.address },
       {
         status: 200,
       }
     );
   } catch (error: any) {
+    // Handle errors
     return new NextResponse(`${error.message}`, {
       status: 500,
       statusText: error.message,
