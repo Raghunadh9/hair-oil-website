@@ -67,11 +67,11 @@ export const POST = async (req: Request) => {
 
 export const GET = async (
   req: Request,
-  { params }: { params: { userId: string } }
+  { searchParams }: { searchParams: { userId: string } }
 ) => {
   try {
     await connectToDatabase();
-    let user = await User.findOne({ clerkId: params.userId });
+    let user = await User.findOne({ clerkId: searchParams.userId });
     const cart = await Cart.findOne({ user: user._id });
     return NextResponse.json(
       {
