@@ -72,7 +72,7 @@ export const GET = async (
   try {
     await connectToDatabase();
     let user = await User.findOne({ clerkId: searchParams?.userId });
-    const cart = await Cart.findOne({ user: user._id });
+    const cart = await Cart.findOne({ user: user?._id });
     return NextResponse.json(
       {
         user: JSON.parse(JSON.stringify(user)),
