@@ -7,7 +7,7 @@ export const PUT = async (req: Request) => {
   try {
     await connectToDatabase();
     const { id, user_id } = await req.json();
-    const user = await User.findById(user_id);
+    const user = await User.findOne({ clerkId: user_id });
     let user_addresses = user.address;
     let addresses = [];
 
@@ -70,7 +70,7 @@ export const DELETE = async (req: Request) => {
 export const POST = async (req: Request) => {
   try {
     const { address, user_id } = await req.json();
-    const user = await User.findById(user_id);
+    const user = await User.findOne({ clerkId: user_id });
 
     if (!user) {
       return NextResponse.json("User not found", { status: 500 });
