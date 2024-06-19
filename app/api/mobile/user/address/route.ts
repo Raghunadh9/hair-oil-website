@@ -41,7 +41,7 @@ export const DELETE = async (req: Request) => {
   try {
     await connectToDatabase();
     const { id, user_id } = await req.json();
-    const user = await User.findById(user_id);
+    const user = await User.findOne({ clerkId: user_id });
     await user.updateOne(
       {
         $pull: {
