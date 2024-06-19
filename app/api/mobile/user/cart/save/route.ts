@@ -64,28 +64,3 @@ export const POST = async (req: Request) => {
     });
   }
 };
-
-export const GET = async (
-  req: Request,
-  { searchParams }: { searchParams: { userId: string } }
-) => {
-  try {
-    await connectToDatabase();
-    let user = await User.findOne({ clerkId: searchParams?.userId });
-    const cart = await Cart.findOne({ user: user?._id });
-    return NextResponse.json(
-      {
-        user: JSON.parse(JSON.stringify(user)),
-        cart: JSON.parse(JSON.stringify(cart)),
-      },
-      {
-        status: 200,
-      }
-    );
-  } catch (error: any) {
-    return new NextResponse(`${error.message}`, {
-      status: 500,
-      statusText: error.message,
-    });
-  }
-};
