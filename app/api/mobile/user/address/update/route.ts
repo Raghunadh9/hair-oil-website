@@ -14,7 +14,7 @@ export const PUT = async (req: Request) => {
     }
 
     const addressIndex = user.address.findIndex(
-      (addr: any) => addr._id === address_id
+      (addr: any) => addr._id.toString() === address_id.toString()
     );
 
     if (addressIndex === -1) {
