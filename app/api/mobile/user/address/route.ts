@@ -54,10 +54,20 @@ export const DELETE = async (req: Request) => {
         statusText: "User not found",
       });
     }
-    // Filter out the address with the specified _id
-    user.addresses = user.addresses.filter(
-      (address: any) => address._id.toString() !== id
+    // Find the index of the address to be removed
+    const addressIndex = user.addresses.findIndex(
+      (address: any) => address._id.toString() === id
     );
+
+    if (addressIndex === -1) {
+      return new NextResponse("Address not found", {
+        status: 404,
+        statusText: "Address not found",
+      });
+    }
+
+    // Remove the address using splice
+    user.addresses.splice(addressIndex, 1);
 
     // Save the updated user document
     await user.save();
