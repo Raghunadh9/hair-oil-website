@@ -21,7 +21,7 @@ export const PUT = async (req: Request) => {
         status: 404,
       });
     }
-    const { cartTotal } = await Cart.findOne({ user: user_id });
+    const { cartTotal } = await Cart.findOne({ user: user._id });
     let totalAfterDiscount =
       cartTotal - (cartTotal * checkCoupon.discount) / 100;
     await Cart.findByIdAndUpdate(user._id, { totalAfterDiscount });
