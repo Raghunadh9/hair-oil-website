@@ -13,12 +13,12 @@ export const PUT = async (req: Request) => {
     const checkCoupon = await Coupon.findOne({ coupon });
     if (!user) {
       return new NextResponse(`User not found`, {
-        status: 500,
+        status: 404,
       });
     }
     if (checkCoupon == null) {
       return new NextResponse(`Invalid Coupon`, {
-        status: 500,
+        status: 404,
       });
     }
     const { cartTotal } = await Cart.findOne({ user: user_id });
