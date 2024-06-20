@@ -9,7 +9,7 @@ export const PUT = async (req: Request) => {
   try {
     await connectToDatabase();
     const { user_id, coupon } = await req.json();
-    const user = await User.findById(user_id);
+    const user = await User.findById({ clerkId: user_id });
     const checkCoupon = await Coupon.findOne({ coupon });
     if (!user) {
       return new NextResponse(`User not found`, {
