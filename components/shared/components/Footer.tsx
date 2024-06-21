@@ -24,7 +24,7 @@ const FooterColumn = ({ title, links }: ColumnProps) => (
 );
 
 const Footer = () => (
-  <section className="flexStart footer border-t-1 border-gray-200 bg-[#01BC8F] text-white">
+  <section className="flexStart footer border-t-1 border-gray-200 website-theme-color-bg text-white">
     <div className="flex flex-col gap-12 w-full">
       <div className="flex items-start flex-col">
         <Logo />
