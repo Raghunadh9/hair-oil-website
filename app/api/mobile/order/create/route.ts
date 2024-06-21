@@ -16,6 +16,7 @@ export const POST = async (req: Request) => {
       totalBeforeDiscount,
       couponApplied,
       user_id,
+      totalSaved,
     } = body;
     const user = await User.findById(user_id);
     if (!user) {
@@ -29,6 +30,7 @@ export const POST = async (req: Request) => {
       total,
       totalBeforeDiscount,
       couponApplied,
+      totalSaved,
     }).save();
     return NextResponse.json(
       { order_id: JSON.parse(JSON.stringify(newOrder._id)) },
