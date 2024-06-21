@@ -18,7 +18,7 @@ export const POST = async (req: Request) => {
       user_id,
       totalSaved,
     } = body;
-    const user = await User.findById(user_id);
+    const user = await User.findOne({ clerkId: user_id });
     if (!user) {
       NextResponse.json("User not found", { status: 500 });
     }
